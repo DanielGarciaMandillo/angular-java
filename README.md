@@ -9,10 +9,12 @@ Build cross platform desktop apps with web technologies with node-java
 
 1) Clone the project electron-node-java
 
-HTTPS
+* HTTPS
+
 ```git clone https://github.com/DanielGarciaMandillo/electron-node-java.git```
 
-SSH
+* SSH
+
 ```git clone git@github.com:DanielGarciaMandillo/electron-node-java.git```
 
 2) Go to folder electron-node-java
