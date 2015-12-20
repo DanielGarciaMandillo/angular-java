@@ -7,40 +7,55 @@ Build cross platform desktop apps with web technologies with node-java
 
 # How to 
 
-1) Download the project electron-node-java
+1) Clone the project electron-node-java
 
-2) Type ```npm install``` for download dependencies
+HTTPS
+```git clone https://github.com/DanielGarciaMandillo/electron-node-java.git```
 
-3) Type ```npm start``` for open browser with application
+SSH
+```git clone git@github.com:DanielGarciaMandillo/electron-node-java.git```
 
-When application starts maybe you can find in the browser console a error like : ```Crashes on start: Error: Module version mismatch. Expected 47, got 46```.
+2) Go to folder electron-node-java
 
-You can fix: Delete folder node_modules and type :
+```cd electron-node-java```
+
+The native Node modules are supported by Electron, but since Electron is using a different V8 version from official Node, you have to manually specify the location of Electron's headers when building native modules.
+You need to setup some environment variables:
 
 ```
 export npm_config_disturl=https://atom.io/download/atom-shell
 export npm_config_target=0.36.1
 export npm_config_arch=x64
-npm install
 ``` 
 
-npm_config_target is last version of atom-shell electron
+npm_config_target is last electron version
 npm_config_arch is your arch : x64 or x86
 More info in [electron docs]
+
+3) Type ```npm install``` for download dependencies.
+
+4) Type ```mvn clean install``` for generate jar or use your IDE for generate it.
+
+5) Type  ```npm install``` for open browser.
+
 
 # Structure
 
 A basic electron-node-java application needs just these files:
 
-* node-java/app.js - A javascript code using java-node.
-* jar/*.jar - Any jar you want use.
-* index.html - A web page to render.
-* main.js - Starts the app and creates a browser window to render HTML.
+* src - Folder with java project sources.
+* bin - Folder with java project jar generated.
+* node-java - Folder with code using java-node.
+	* lib - Javascript code using java-node.
+	* index.html - A web page to render.
+	* main.js - Starts the app and creates a browser window to render HTML (NodeJS file).
 * package.json - Points to the app's main file and lists its details and dependencies.
+* pom.xml - It refers to the java project.
+* .gitignore - Ignore directories by entering the directory name into the file.
  
 #Author
 daniel.garciamandillo@gmail.com
 
-[electron docs]: https://github.com/atom/electron/blob/master/docs-translations/es/tutorial/using-native-node-modules.md
+[electron docs]: https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md
 [Electron project]: https://github.com/mafintosh/electron-prebuilt
 [Node-java project]: https://github.com/joeferner/node-java
