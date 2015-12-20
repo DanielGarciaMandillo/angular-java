@@ -38,7 +38,7 @@ More info in [electron docs]
 
 4) Type ```mvn clean install``` for generate jar or use your IDE for generate it.
 
-5) Type  ```npm install``` for open browser.
+5) Type  ```npm start``` for open browser.
 
 
 # Structure
