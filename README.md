@@ -15,14 +15,17 @@ Build cross platform desktop apps with web technologies with node-java
 
 When application starts maybe you can find in the browser console a error like : ```Crashes on start: Error: Module version mismatch. Expected 47, got 46```.
 
-You can fix type this after ```npm install```:
+You can fix: Delete folder node_modules and type :
 
 ```
 export npm_config_disturl=https://atom.io/download/atom-shell
-export npm_config_target=0.29.1
+export npm_config_target=0.36.1
 export npm_config_arch=x64
-HOME=~/.electron-gyp npm install java --save-dev
+npm install
 ``` 
+
+npm_config_target is last version of atom-shell electron
+npm_config_arch is your arch : x64 or x86
 More info in [electron docs]
 
 # Structure
