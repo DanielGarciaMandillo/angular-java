@@ -38,7 +38,9 @@ More info in [electron docs]
 
 4) Type ```mvn clean install``` for generate jar or use your IDE for generate it.
 
-5) Type  ```npm start``` for open browser.
+5) Type ```java -jar target/electron-node-java-0.0.1.jar``` for launch the app.
+
+6) Type  ```npm start``` for open browser.
 
 
 # Structure
@@ -46,7 +48,7 @@ More info in [electron docs]
 A basic electron-node-java application needs just these files:
 
 * src - Folder with java project sources.
-* bin - Folder with java project jar generated.
+* target - Folder with java project jar generated.
 * node-java - Folder with code using java-node.
 	* lib - Javascript code using java-node.
 	* index.html - A web page to render.
