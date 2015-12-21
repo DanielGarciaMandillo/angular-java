@@ -1,12 +1,28 @@
 var java = require("java");
 
-java.classpath.push("bin/electron-node-java-0.0.1.jar");
+java.classpath.push("target/electron-node-java-0.0.1.jar");
 
-//Llamada a instancia util random
-var math = java.newInstanceSync("java.util.Random");
-var result1 = (math.nextDoubleSync()*10).toFixed(0);
-document.getElementById("result1").textContent = result1;
+var actionsImpl = java.newInstanceSync("com.actions.impl.ActionsImpl");
 
-//Llamada a getRandomInteger
-var result2 = java.callStaticMethodSync("com.random.Main", "getRandomInteger");
-document.getElementById("result2").textContent = result2;
+getItems();
+
+function getItems() {
+    var result = java.callMethodSync(actionsImpl, "getItems");
+    var list = [];
+
+    for (var i = 0; i < result.sizeSync(); i++) {
+        list.push(result.getSync(i).getNameSync());
+    };
+    document.getElementById("listResults").textContent = list;
+};
+
+function addItem() {
+    var name = document.getElementById('item').value;
+    document.getElementById('item').value = '';
+
+    if (name) {
+        var item = java.newInstanceSync("com.item.Item", 1, name);
+        java.callMethodSync(actionsImpl, "addItem", item);
+        getItems();
+    }
+};

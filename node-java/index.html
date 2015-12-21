@@ -6,9 +6,12 @@
 </head>
 
 <body>
-    <h1>Basic electron + node-java</h1>
-    <p> Result random of random util method: <span id="result1"></p>    
-    <p> Result random of external jar: <span id="result2"></p>
+    <h1>ITEMS</h1>
+    <div>Items now: <span id="listResults"></span></div>
+    <form>
+        <input type="text" id="item"><br/>
+        <input type="button" value="Add item" onclick="addItem()">
+    </form>
 </body>
 <script type="text/javascript" src="lib/app.js"></script>
 </html>
