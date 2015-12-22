@@ -6,9 +6,14 @@
   "scripts": {
     "start": "electron node-java/main.js"
   },
+  "java": {
+    "dependencies": [
+    ]
+  },
   "author": "Daniel García Mandillo",
   "devDependencies": {
     "electron-prebuilt": "^0.36.1",
-    "java": "^0.6.0"
+    "java": "^0.6.0",
+    "node-java-maven": "0.0.11"
   }
 }
