@@ -12,33 +12,33 @@ mvn(function (err, mvnResults) {
 
 });
 
-java.classpath.push("bin/electron-node-java-0.0.1.jar");
+java.classpath.push("bin/electron-node-java-0.0.1-jar-with-dependencies.jar");
 
-var repository = java.newInstanceSync('com.items.Repository');
+var repository = java.newInstanceSync('com.Repository');
 
-getItems();
+initApp();
+
+function initApp() {
+  repository.deleteTableSync();
+  repository.createTableSync();
+  getAllItems();
+}
 
 function addItem() {
   var name = document.getElementById('item').value;
-
   if (name) {
     document.getElementById('item').value = '';
-
-    var item = java.newInstanceSync('com.items.Item', name);
-
-    repository.addItemSync(item);
-
-    getItems();
+    var item = java.newInstanceSync('com.Item', name);
+    repository.insertItemSync(item);
+    getAllItems();
   }
 }
 
-function getItems() {
+function getAllItems() {
   var result = [];
-  var itemList = repository.getItemsSync();
-
+  var itemList = repository.getDataTableSync();
   for (var i = 0; i < itemList.sizeSync(); i++) {
     result.push(itemList.getSync(i).getNameSync());
   }
-
   document.getElementById("listResults").textContent = result;
 }
