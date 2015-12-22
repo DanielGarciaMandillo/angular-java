@@ -34,11 +34,11 @@ npm_config_target is last electron version
 npm_config_arch is your arch : x64 or x86
 More info in [electron docs]
 
-3) Type ```npm install``` for download dependencies.
+3) Type ```npm install``` to download dependencies.
 
-4) Type ```mvn clean compile assembly:single``` for generate jar with all dependencies from pom.xml in a single jar.
+4) Type ```mvn clean compile assembly:single``` to generate jar with all dependencies from pom.xml in a single jar.
 
-5) Type  ```npm start``` for open browser.
+5) Type  ```npm start``` to open browser.
 
 
 # Structure
@@ -55,9 +55,35 @@ A basic electron-node-java application needs just these files:
 * pom.xml - It refers to the java project.
 * .gitignore - Ignore directories by entering the directory name into the file.
  
+#Compile code
+
+- When java code changes in native java project you should generate a new jar: ```mvn clean compile assembly:single```
+- When javascript code changes you should restart the browser. Two ways:
+	* Type ```npm start```
+	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
+
+#Use maven 
+
+The project includes [node-java-maven] for  manages your node-java classpath by using maven dependency mangement.
+
+To add packages add fields into package.json, example:
+
+```json
+ "java": {
+    "dependencies": [
+      {
+        "groupId": "org.apache.lucene",
+        "artifactId": "lucene-core",
+        "version": "4.9.0"
+      }
+    ]
+  }
+```
+
 #Author
 daniel.garciamandillo@gmail.com
 
 [electron docs]: https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md
 [Electron project]: https://github.com/mafintosh/electron-prebuilt
 [Node-java project]: https://github.com/joeferner/node-java
+[node-java-maven]: https://github.com/joeferner/node-java-maven
