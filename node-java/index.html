@@ -3,18 +3,24 @@
 
 <head>
   <title>Basic electron+node-java</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-  <h1>ITEMS</h1>
-  <div>Items now:
-    <span id="listResults"></span>
-  </div>
-  <form>
-    <input type="text" id="item">
-    <br/>
-    <input type="button" value="Add item" onclick="addItem()">
-  </form>
+  <header>
+    <h1>Things to Do</h1>
+  </header>
+  <section class="right">
+    <input type="text" placeholder="Type things to do: " id="thing">
+    <a href="#" class="button" onclick="addThing()">Add thing</a>
+  </section>
+  <section>
+    <div class="title">Current list:</div>
+    <div id="results" class="results"></div>
+  </section>
+  <footer>
+    Testing electron-node-java
+  </footer>
 </body>
 <script type="text/javascript" src="lib/app.js"></script>
 
