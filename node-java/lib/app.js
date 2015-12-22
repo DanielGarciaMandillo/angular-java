@@ -1,28 +1,32 @@
 var java = require("java");
 
-java.classpath.push("target/electron-node-java-0.0.1.jar");
+java.classpath.push("bin/electron-node-java-0.0.1.jar");
 
-var actionsImpl = java.newInstanceSync("com.actions.impl.ActionsImpl");
+var repository = java.newInstanceSync('com.items.Repository');
 
 getItems();
 
-function getItems() {
-    var result = java.callMethodSync(actionsImpl, "getItems");
-    var list = [];
-
-    for (var i = 0; i < result.sizeSync(); i++) {
-        list.push(result.getSync(i).getNameSync());
-    };
-    document.getElementById("listResults").textContent = list;
-};
-
 function addItem() {
-    var name = document.getElementById('item').value;
+  var name = document.getElementById('item').value;
+
+  if (name) {
     document.getElementById('item').value = '';
 
-    if (name) {
-        var item = java.newInstanceSync("com.item.Item", 1, name);
-        java.callMethodSync(actionsImpl, "addItem", item);
-        getItems();
-    }
-};
+    var item = java.newInstanceSync('com.items.Item', name);
+
+    repository.addItemSync(item);
+
+    getItems();
+  }
+}
+
+function getItems() {
+  var result = [];
+  var itemList = repository.getItemsSync();
+
+  for (var i = 0; i < itemList.sizeSync(); i++) {
+    result.push(itemList.getSync(i).getNameSync());
+  }
+
+  document.getElementById("listResults").textContent = result;
+}
