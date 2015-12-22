@@ -36,7 +36,7 @@ More info in [electron docs]
 
 3) Type ```npm install``` for download dependencies.
 
-4) Type ```mvn clean install``` for generate jar or use your IDE for generate it.
+4) Type ```mvn clean compile assembly:single``` for generate jar with all dependencies from pom.xml in a single jar.
 
 5) Type  ```npm start``` for open browser.
 
