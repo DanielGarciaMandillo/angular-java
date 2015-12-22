@@ -40,6 +40,9 @@ More info in [electron docs]
 
 5) Type  ```npm start``` to open browser.
 
+6) You can use the application:
+
+![alt text][logo]
 
 # Structure
 
@@ -87,3 +90,4 @@ daniel.garciamandillo@gmail.com
 [Electron project]: https://github.com/mafintosh/electron-prebuilt
 [Node-java project]: https://github.com/joeferner/node-java
 [node-java-maven]: https://github.com/joeferner/node-java-maven
+[logo]: https://github.com/DanielGarciaMandillo/electron-node-java/blob/master/node-java/img/tutorial.png "Tutorial image"
