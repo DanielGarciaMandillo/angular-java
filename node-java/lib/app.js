@@ -19,26 +19,26 @@ var repository = java.newInstanceSync('com.Repository');
 initApp();
 
 function initApp() {
-
+  repository.deleteTableSync();
   repository.createTableSync();
-  getAllThings();
+  getAllTasks();
 }
 
-function addThing() {
-  var name = document.getElementById('thing').value;
+function addTask() {
+  var name = document.getElementById('task').value;
   if (name) {
-    document.getElementById('thing').value = '';
-    var thing = java.newInstanceSync('com.Item', name);
-    repository.insertItemSync(thing);
-    getAllThings();
+    document.getElementById('task').value = '';
+    var task = java.newInstanceSync('com.Item', name);
+    repository.insertItemSync(task);
+    getAllTasks();
   }
 }
 
-function getAllThings() {
+function getAllTasks() {
   var result = [];
-  var thingsList = repository.getDataTableSync();
-  for (var i = 0; i < thingsList.sizeSync(); i++) {
-    result.push("<li>" + thingsList.getSync(i).getNameSync() + "</li>");
+  var tasksList = repository.getDataTableSync();
+  for (var i = 0; i < tasksList.sizeSync(); i++) {
+    result.push("<li>" + tasksList.getSync(i).getNameSync() + "</li>");
   }
   document.getElementById("results").innerHTML = result.join("");
 }
