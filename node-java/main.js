@@ -19,7 +19,7 @@ app.on('window-all-closed', function() {
 // y esté listo para crear ventanas de navegador.
 app.on('ready', function() {
   // Crear la ventana.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 1280, height: 1024});
 
   // cargar el index.html de nuestra aplicación.
   mainWindow.loadURL('file://' + __dirname + '/index.html');

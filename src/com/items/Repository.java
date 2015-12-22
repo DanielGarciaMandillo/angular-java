@@ -1,14 +1,11 @@
-package com.actions.impl;
+package com.items;
 
 import java.util.ArrayList;
 
-import com.actions.Actions;
-import com.item.Item;
+public class Repository {
 
-public class ActionsImpl implements Actions {
-	
 	ArrayList<Item> itemList = new ArrayList<Item>();
-	
+
 	public ArrayList<Item> getItems() {
 		return itemList;
 	}
