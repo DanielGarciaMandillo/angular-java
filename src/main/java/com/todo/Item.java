@@ -1,4 +1,4 @@
-package com;
+package com.todo;
 
 public class Item {
 	private String name;
