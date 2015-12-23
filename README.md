@@ -65,23 +65,6 @@ A basic electron-node-java application needs just these files:
 	* Type ```npm start```
 	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
 
-#Use maven 
-
-The project includes [node-java-maven] for  manages your node-java classpath by using maven dependency mangement.
-
-To add packages add fields into package.json, example:
-
-```json
- "java": {
-    "dependencies": [
-      {
-        "groupId": "org.apache.lucene",
-        "artifactId": "lucene-core",
-        "version": "4.9.0"
-      }
-    ]
-  }
-```
 
 #Author
 daniel.garciamandillo@gmail.com
