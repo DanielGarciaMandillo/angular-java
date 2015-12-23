@@ -48,7 +48,7 @@ More info in [electron docs]
 
 A basic electron-node-java application needs just these files:
 
-* src - Folder with java project sources.
+* src/main/java - Folder with java project sources.
 * bin - Folder with required jars.
 * node-java - Folder with code using java-node.
 	* lib - Javascript code using java-node.
