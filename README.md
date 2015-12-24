@@ -62,7 +62,7 @@ A basic electron-node-java application needs just these files:
 
 - When java code changes in native java project you should generate a new jar: ```mvn clean compile assembly:single```
 - When javascript code changes you should restart the browser. Two ways:
-	* Type ```npm start```
+	* Type in console ```npm start```
 	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
 
 
