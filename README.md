@@ -8,6 +8,8 @@ Build cross platform desktop apps with web technologies using java from javascri
 
 # Guide to developers 
 
+This guide will be seen by the developer
+
 ##Quick start
 
 1) Clone the project electron-node-java
@@ -44,6 +46,7 @@ Now you can use the application:
 - When javascript code changes you should restart the browser. Two ways:
 	* Type in console ```npm start```
 	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
+
 
 ##Application deployment
 
