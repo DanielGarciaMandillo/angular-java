@@ -4,7 +4,7 @@ Build cross platform desktop apps with web technologies using java from javascri
 
 - [Electron project]
 - [Node-java project]
-- Based on [Electron boirlerplate] for build compilation packages (Linux, Windows and Mac)
+- Based on [Electron boilerplate] for build compilation packages (Linux, Windows and Mac)
 
 # Guide to developers 
 
