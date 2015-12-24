@@ -10,6 +10,14 @@ Build cross platform desktop apps with web technologies using java from javascri
 
 This guide will be seen by the developer
 
+##Requeriments
+
+You have to have installed on your computer [NodeJS].
+
+You have to see [supported platforms] for Electron.
+
+You have to see [supported JVM] for Node-java.
+
 ##Quick start
 
 1) Clone the project electron-node-java
@@ -91,5 +99,8 @@ daniel.garciamandillo@gmail.com
 [electron docs]: https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md
 [Electron project]: https://github.com/mafintosh/electron-prebuilt
 [Electron boilerplate]: https://github.com/szwacz/electron-boilerplate
+[NodeJS]: https://nodejs.org
+[supported platforms]: https://github.com/atom/electron/blob/master/docs/tutorial/supported-platforms.md
+[supported JVM]: https://github.com/joeferner/node-java/blob/master/README.md
 [Node-java project]: https://github.com/joeferner/node-java
 [image-tutorial]: https://github.com/DanielGarciaMandillo/electron-node-java/blob/master/app/img/tutorial.png "Tutorial image"
