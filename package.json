@@ -1,19 +1,20 @@
 {
-  "name": "electron-node-java",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "electron node-java/main.js"
-  },
-  "java": {
-    "dependencies": [
-    ]
-  },
-  "author": "Daniel García Mandillo",
   "devDependencies": {
-    "electron-prebuilt": "^0.36.1",
-    "java": "^0.6.0",
-    "node-java-maven": "0.0.11"
+    "asar": "^0.7.2",
+    "electron-prebuilt": "^0.35.1",
+    "fs-jetpack": "^0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "q": "^1.4.1",
+    "tree-kill": "^0.1.1",
+    "yargs": "^3.15.0"
+  },
+  "optionalDependencies": {
+    "appdmg": "^0.3.2",
+    "rcedit": "^0.3.0"
+  },
+  "scripts": {
+    "release": "gulp release --env=production",
+    "start": "node ./tasks/start"
   }
 }

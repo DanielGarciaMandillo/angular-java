@@ -1,0 +1,12 @@
+{
+    "name": "electron-node-java",
+    "productName": "Electron Node-Java",
+    "description": "Build cross platform desktop apps with web technologies using java from javascript",
+    "version": "0.1.0",
+    "author": "Daniel Garcia Mandillo",
+    "main": "browser.js",
+    "devDependencies": {
+        "java": "^0.6.0",
+        "node-java-maven": "^0.0.11"
+    }
+}
