@@ -48,9 +48,9 @@ Now you can use the application:
 
 ####Changing code
 
-- When java code changes in native java project you should generate a new jar: ```mvn clean compile assembly:single```
+- When java code changes in native java project you should generate a new jar: 
+    * Type ```npm start```, that includes a maven command for generate it.
 - When javascript code changes you should restart the browser. Two ways:
-	* Type in console ```npm start```
 	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
 
 
