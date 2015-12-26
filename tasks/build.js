@@ -65,6 +65,4 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('build', ['maven'.
-    'copy', 'finalize'
-]);
+gulp.task('build', ['maven', 'copy', 'finalize']);
