@@ -12,9 +12,13 @@ This guide will be seen by the developer
 
 ##Requeriments
 
-You have to have installed on your computer [NodeJS].
+- Windows 7 or later (x86 and x64)
+- Ubuntu 12.04 or later, Fedora 21, Debian 8. (x86 and x64)
+- OS X 10.8 or later (x64)
 
-You have to see [supported platforms] for Electron.
+You can see [supported platforms] for Electron.
+
+You have to have installed on your computer [NodeJS] and [Python 2.X].
 
 You have to see [supported JVM] for Node-java.
 
@@ -98,6 +102,7 @@ daniel.garciamandillo@gmail.com
 [Electron project]: https://github.com/mafintosh/electron-prebuilt
 [Electron boilerplate]: https://github.com/szwacz/electron-boilerplate
 [NodeJS]: https://nodejs.org
+[Python 2.X]: https://www.python.org/downloads/
 [supported platforms]: https://github.com/atom/electron/blob/master/docs/tutorial/supported-platforms.md
 [supported JVM]: https://github.com/joeferner/node-java/blob/master/README.md
 [Node-java project]: https://github.com/joeferner/node-java
