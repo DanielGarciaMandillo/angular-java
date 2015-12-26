@@ -36,6 +36,15 @@ var copyTask = function() {
     });
 };
 
+
+gulp.task('maven', function(callback) {
+    var mvn = require('maven').create({
+        cwd: './'
+    });
+    mvn.execute(['clean', 'compile', 'assembly:single'], {});
+});
+
+
 gulp.task('copy', ['clean'], copyTask);
 gulp.task('copy-watch', copyTask);
 
@@ -56,4 +65,6 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('build', ['copy', 'finalize']);
+gulp.task('build', ['maven'.
+    'copy', 'finalize'
+]);

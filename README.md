@@ -36,13 +36,11 @@ You have to see [supported JVM] for Node-java.
 
 3) Type ```npm install``` to download dependencies for project Electron.
 
-4) Type ```mvn clean compile assembly:single``` to generate jar with all dependencies from pom.xml in a single jar.
+4) Type ```cd app && npm install``` to download dependencies for application project.
 
-5) Type ```cd app && npm install``` to download dependencies for application project.
+5) Type ```cd .. ``` to go to main folder project.
 
-6) Type ```cd .. ``` to go to main folder project.
-
-7) Type ```npm start``` to open browser.
+6) Type ```npm start``` to open browser.
 
 Now you can use the application:
 
