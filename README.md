@@ -66,17 +66,17 @@ On main folder of project you should type:
 
 ```npm run release```
 
-It will start the packaging process for operating system you are running this command on. You can find the package created in ```resources``` folder
+You can find the package created in ```resources``` folder
 
 ###Windows
 
-On main folder of project you should type:
+[NSIS 3.X] is required for this task. Then add its folder in your PATH environment variable.
+
+Now you can make executable:
 
 ```npm run release```
 
-It will start the packaging process for operating system you are running this command on. You can find the package created in ```resources``` folder
-
-[NSIS 3.X] is required for this task.
+You can find the package created in ```resources``` folder
 
 ###Mac
 
