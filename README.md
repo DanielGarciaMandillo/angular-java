@@ -70,7 +70,13 @@ It will start the packaging process for operating system you are running this co
 
 ###Windows
 
-Comming soon
+On main folder of project you should type:
+
+```npm run release```
+
+It will start the packaging process for operating system you are running this command on. You can find the package created in ```resources``` folder
+
+[NSIS 3.X] is required for this task.
 
 ###Mac
 
@@ -107,5 +113,6 @@ daniel.garciamandillo@gmail.com
 [VisualStudio 2013]: https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#DownloadFamilies_2 
 [supported platforms]: https://github.com/atom/electron/blob/master/docs/tutorial/supported-platforms.md
 [supported JVM]: https://github.com/joeferner/node-java/blob/master/README.md
+[NSIS 3.X]: http://nsis.sourceforge.net/Main_Page
 [Node-java project]: https://github.com/joeferner/node-java
 [image-tutorial]: https://github.com/DanielGarciaMandillo/electron-node-java/blob/master/app/img/tutorial.png "Tutorial image"
