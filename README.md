@@ -20,7 +20,7 @@ You can see [supported platforms] for Electron.
 
 You have to have installed on your computer [NodeJS] and [Python 2.X].
 
-You have to see [supported JVM] for Node-java.
+You can see [supported JVM] for Node-java.
 
 ##Quick start
 
