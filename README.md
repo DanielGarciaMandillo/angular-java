@@ -18,7 +18,7 @@ This guide will be seen by the developer
 
 You can see [supported platforms] for Electron.
 
-You have to have installed on your computer [NodeJS] and [Python 2.X].
+You have to have installed on your computer [NodeJS], [Python 2.X] and [Maven]. For Windows [VisualStudio 2013] or later is required.
 
 You can see [supported JVM] for Node-java.
 
@@ -102,7 +102,9 @@ daniel.garciamandillo@gmail.com
 [Electron project]: https://github.com/mafintosh/electron-prebuilt
 [Electron boilerplate]: https://github.com/szwacz/electron-boilerplate
 [NodeJS]: https://nodejs.org
-[Python 2.X]: https://www.python.org/downloads/
+[Python 2.X]: https://www.python.org/downloads
+[Maven]: http://maven.apache.org/download.cgi
+[VisualStudio 2013]: https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#DownloadFamilies_2 
 [supported platforms]: https://github.com/atom/electron/blob/master/docs/tutorial/supported-platforms.md
 [supported JVM]: https://github.com/joeferner/node-java/blob/master/README.md
 [Node-java project]: https://github.com/joeferner/node-java
