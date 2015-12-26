@@ -41,7 +41,7 @@ gulp.task('maven', function(callback) {
     var mvn = require('maven').create({
         cwd: './'
     });
-    mvn.execute(['clean', 'compile', 'assembly:single'], {});
+    return mvn.execute(['clean', 'compile', 'assembly:single'], {});
 });
 
 
