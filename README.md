@@ -12,13 +12,13 @@ This guide will be seen by the developer
 
 ##Requeriments
 
-- Windows 7 or later (x86 and x64)
-- Ubuntu 12.04 or later, Fedora 21, Debian 8. (x86 and x64)
+- Windows 7 (x86 and x64)
+- Ubuntu 12.04 and later, Fedora 21, Debian 8. (x86 and x64)
 - OS X 10.8 or later (x64)
 
-You can see [supported platforms] for Electron.
-
 You have to have installed on your computer [NodeJS], [Python 2.X] and [Maven].
+
+You can see [supported platforms] for Electron.
 
 You can see [supported JVM] for Node-java.
 
