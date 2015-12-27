@@ -18,7 +18,7 @@ This guide will be seen by the developer
 
 You can see [supported platforms] for Electron.
 
-You have to have installed on your computer [NodeJS], [Python 2.X] and [Maven]. For Windows [VisualStudio 2013] or later is required.
+You have to have installed on your computer [NodeJS], [Python 2.X] and [Maven].
 
 You can see [supported JVM] for Node-java.
 
