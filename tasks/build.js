@@ -42,10 +42,10 @@ gulp.task('maven', function (callback) {
   return mvn.execute(['clean', 'compile', 'assembly:single'], {});
 });
 
-gulp.task('copy', ['clean'], copyTask);
+gulp.task('copy', ['maven','clean'], copyTask);
 gulp.task('copy-watch', copyTask);
 
-gulp.task('finalize', ['clean'], function () {
+gulp.task('finalize', ['maven','clean'], function () {
   var manifest = srcDir.read('package.json', 'json');
 
   manifest.name += '-dev';
