@@ -4,8 +4,8 @@ var Q = require('q');
 var gulpUtil = require('gulp-util');
 var childProcess = require('child_process');
 var jetpack = require('fs-jetpack');
-var asar = require('asar');
 var utils = require('./utils');
+var fs = require('fs');
 
 var projectDir;
 var releasesDir;
@@ -33,13 +33,10 @@ var copyRuntime = function () {
 
 var packageBuiltApp = function () {
 
-
-    // asar.createPackage(projectDir.path('build'), readyAppDir.path('resources/app.asar'), function() {
-    //     deferred.resolve();
-    // });
     projectDir.copy('build', readyAppDir.path('resources/app'));
-    projectDir.copy('bbdd', readyAppDir.path('resources/bbdd'));
-
+    projectDir.copy('app/bbdd', readyAppDir.path('app/bbdd'));
+    fs.chmodSync(readyAppDir.path('app/bbdd'), '0777');
+    fs.chmodSync(readyAppDir.path('app/bbdd/bbdd.mv.db'), '0666');
 
     return Q();
 };

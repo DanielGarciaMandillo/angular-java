@@ -15,7 +15,7 @@ public class Repository {
 	public Repository() {
 		try {
 			Class.forName("org.h2.Driver");
-			con = DriverManager.getConnection("jdbc:h2:./bbdd/bbdd", "bbdd", "");
+			con = DriverManager.getConnection("jdbc:h2:./app/bbdd/bbdd", "bbdd", "");
 			stmt = con.createStatement();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
