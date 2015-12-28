@@ -32,13 +32,16 @@ var copyRuntime = function () {
 };
 
 var packageBuiltApp = function () {
-    var deferred = Q.defer();
 
-    asar.createPackage(projectDir.path('build'), readyAppDir.path('resources/app.asar'), function() {
-        deferred.resolve();
-    });
 
-    return deferred.promise;
+    // asar.createPackage(projectDir.path('build'), readyAppDir.path('resources/app.asar'), function() {
+    //     deferred.resolve();
+    // });
+    projectDir.copy('build', readyAppDir.path('resources/app'));
+    projectDir.copy('bbdd', readyAppDir.path('resources/bbdd'));
+
+
+    return Q();
 };
 
 var finalize = function () {
