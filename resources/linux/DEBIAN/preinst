@@ -1,0 +1,5 @@
+#!/bin/sh
+sudo cp jvm8.tar.gz /opt/electron-node-java/
+cd /opt/electron-node-java/
+sudo tar zxvf jvm8.tar.gz
+export PATH=$PATH:/opt/electron-node-java/jre1.8.0_66/bin
