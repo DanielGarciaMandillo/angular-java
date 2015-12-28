@@ -10,6 +10,5 @@ Thumbs.db
 /build/
 /releases/
 /tmp/
-/bbdd/
-/bin/
 /target/
+/app/bin

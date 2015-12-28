@@ -72,15 +72,11 @@ You can find the package created in ```resources``` folder
 
 [NSIS 3.X] is required for this task. Then add its folder in your PATH environment variable.
 
-Now you can make executable:
-
-```npm run release```
-
-You can find the package created in ```resources``` folder
+Comming soon...
 
 ###Mac
 
-Comming soon
+Comming soon...
 
 
 # Structure
