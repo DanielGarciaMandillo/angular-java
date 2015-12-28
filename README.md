@@ -86,7 +86,7 @@ A basic electron-node-java application needs just these files:
 	* index.html - A web page to render.
 	* browser.js - Starts the app and creates a browser window to render HTML (NodeJS file).
 	* package.json - Points to the app's main file and lists its details and dependencies of APPLICATION project.
-* resources - resources for particular operating system. You can change logo package in this folder.
+* resources - resources for particular operating system. You can change logo package or write script pre/post install package.
 * tasks - build and development environment scripts.
 * package.json - Points to the app's main file and lists its details and dependencies of ELECTRON project.
 * pom.xml - It refers to the java project.
