@@ -84,8 +84,22 @@ sudo mv jre1.8.0_66 jvm;
 ":/opt/electron-node-java/jvm/lib/amd64/server"
 ```
 
+4) Change nodejavabridge_bindings.target.mk params -L and -Wl with correct path (locate app/node_modules/java/build)
 
-4) Run script for build node-java sources in console (locate app/node_modules/java)
+```
+LIBS := \
+	-L/opt/electron-node-java/jvm/lib/amd64/server \
+	-Wl,-rpath,/opt/electron-node-java/jvm/lib/amd64/server \
+	-ljvm
+```
+
+5) Change nodejavabridge_bindings.node.d params -L and -Wl with correct path (locate app/node_modules/java/build/Release/.deps/Release/obj.target)
+
+```
+-L/opt/electron-node-java/jvm/lib/amd64/server -Wl,-rpath,/opt/electron-node-java/jvm/lib/amd64/server -ljvm
+```
+
+6) Run script for build node-java sources in console (locate app/node_modules/java)
 
 ```
 ./compile-java-code.sh
