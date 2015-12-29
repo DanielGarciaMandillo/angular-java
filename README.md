@@ -46,13 +46,52 @@ Now you can use the application:
 
 ![Tutorial image][image-tutorial]
 
-####Changing code
+##Changing code
 
 - When java code changes in native java project you should generate a new jar: 
     * Type ```npm start```, that includes a maven command for generate it.
 - When javascript code changes you should restart the browser. Two ways:
 	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
 
+## JVM embedded
+
+This project includes a JVM so the user does not have to install it. You can create a JVM embedded in a few steps:
+
+1) Copy JVM and postinst in debian package directory (file release_[YourSystem].js): 
+
+```
+  //Copy jvm
+    projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
+  
+  // Copy preinst
+    var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
+    packDir.write('DEBIAN/postinst', postinst);
+    fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
+```
+
+2) Create postinst script in correct folder
+
+```sh
+#!/bin/sh
+cd /opt/electron-node-java/;
+sudo tar zxvf jre-8u66-linux-x64.tar.gz;
+sudo mv jre1.8.0_66 jvm;
+```
+
+3) Put the correct path in file jvm_dll_path.json (locate : app/node_modules/java/build)
+
+```
+":/opt/electron-node-java/jvm/lib/amd64/server"
+```
+
+
+4) Run script for build node-java sources in console (locate app/node_modules/java)
+
+```
+./compile-java-code.sh
+```
+
+Important : The JVM must be the same version as the JDK
 
 ##Application deployment
 
