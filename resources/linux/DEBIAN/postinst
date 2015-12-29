@@ -1,3 +1,4 @@
 #!/bin/sh
 cd /opt/electron-node-java/;
-source ./jre-install;
+sudo tar zxvf jdk-8u66-linux-x64;
+sudo mv jdk1.8.0_66 jvm;
