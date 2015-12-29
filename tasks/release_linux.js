@@ -90,10 +90,7 @@ var packToDebFile = function() {
     packDir.write('DEBIAN/control', control);
 
     // Copy jvm
-    projectDir.copy('resources/linux/DEBIAN/jvm8.tar.gz', readyAppDir.path('jvm8.tar.gz'));
-    // Copy jvm installer
-    projectDir.copy('resources/linux/DEBIAN/jre-install', readyAppDir.path('jre-install'));
-    fs.chmodSync(readyAppDir.path('jre-install'), '0755');
+    projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
     // Copy preinst
     var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
     packDir.write('DEBIAN/postinst', postinst);
