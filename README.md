@@ -55,7 +55,7 @@ Now you can use the application:
 
 ## JVM embedded
 
-This project includes a JVM so the user does not have to install it. You can create a JVM embedded in a few steps:
+This project includes a JVM so the user does not have to install it. You can create a JVM embedded in two steps:
 
 1) Copy JVM and postinst in debian package directory (file release_[YourSystem].js): 
 
@@ -74,37 +74,14 @@ This project includes a JVM so the user does not have to install it. You can cre
 ```sh
 #!/bin/sh
 cd /opt/electron-node-java/;
+sudo mkdir -p /usr/lib/jvm/java-8-oracle/jre;
+sudo mv jre-8u66-linux-x64.tar.gz /usr/lib/jvm/java-8-oracle;
+cd /usr/lib/jvm/java-8-oracle;
 sudo tar zxvf jre-8u66-linux-x64.tar.gz;
-sudo mv jre1.8.0_66 jvm;
+sudo rm -rf jre;
+sudo mv jre1.8.0_66 jre;
+sudo rm -rf jre1.8.0_66:
 ```
-
-3) Put the correct path in file jvm_dll_path.json (locate : app/node_modules/java/build)
-
-```
-":/opt/electron-node-java/jvm/lib/amd64/server"
-```
-
-4) Change nodejavabridge_bindings.target.mk params -L and -Wl with correct path (locate app/node_modules/java/build)
-
-```
-LIBS := \
-	-L/opt/electron-node-java/jvm/lib/amd64/server \
-	-Wl,-rpath,/opt/electron-node-java/jvm/lib/amd64/server \
-	-ljvm
-```
-
-5) Change nodejavabridge_bindings.node.d params -L and -Wl with correct path (locate app/node_modules/java/build/Release/.deps/Release/obj.target)
-
-```
--L/opt/electron-node-java/jvm/lib/amd64/server -Wl,-rpath,/opt/electron-node-java/jvm/lib/amd64/server -ljvm
-```
-
-6) Run script for build node-java sources in console (locate app/node_modules/java)
-
-```
-./compile-java-code.sh
-```
-
 Important : The JVM must be the same version as the JDK
 
 ##Application deployment
