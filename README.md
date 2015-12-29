@@ -59,14 +59,14 @@ This project includes a JVM so the user does not have to install it. You can cre
 
 1) Copy JVM and postinst in debian package directory (file release_[YourSystem].js): 
 
-```
+```js
   //Copy jvm
-    projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
+  projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
   
   // Copy preinst
-    var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
-    packDir.write('DEBIAN/postinst', postinst);
-    fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
+  var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
+  packDir.write('DEBIAN/postinst', postinst);
+  fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
 ```
 
 2) Create postinst script in correct folder
