@@ -4,13 +4,11 @@ java.classpath.push(__dirname + '/bin/electron-node-java-0.0.1-jar-with-dependen
 
 var repository = java.newInstanceSync('com.todo.Repository');
 
-initApp();
-
-function initApp() {
+(function initApp() {
   repository.deleteTableSync();
   repository.createTableSync();
   getAllTasks();
-};
+})();
 
 function getAllTasks() {
   var result = [];
