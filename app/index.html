@@ -2,27 +2,37 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Electron + Node-Java using BBDD H2</title>
-    <link href="./style/main.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8">
+  <title>Electron + Node-Java using BBDD H2</title>
+  <link href="./style/main.css" rel="stylesheet" type="text/css">
+  <!-- 1. Load libraries -->
+  <!-- IE required polyfill -->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-all.umd.js"></script>
+  <!-- 2. Load our 'modules' -->
+  <script src='app.title.js'></script>
+  <script src='boot.js'></script>
 </head>
 
 <body>
-    <header>
-        <h1>Tasks done</h1>
-    </header>
-    <section class="right">
-        <input type="text" placeholder="Type tasks done: " id="task">
-        <a href="#" class="button" onclick="addTask()">Add task</a>
-    </section>
-    <section>
-        <div class="title">Tasks done:</div>
-        <div id="results" class="results"></div>
-    </section>
-    <footer>
-        Testing electron-node-java
-    </footer>
-    <script src="app.js"></script>
+  <header>
+    <dev-title></dev-title>
+  </header>
+  <section class="right">
+    <input type="text" placeholder="Type tasks done: " id="task">
+    <a href="#" class="button" onclick="addTask()">Add task</a>
+  </section>
+  <section>
+    <div class="title">Tasks done:</div>
+    <div id="results" class="results"></div>
+  </section>
+  <footer>
+    Testing electron-node-java
+  </footer>
+  <script src="app.js"></script>
 </body>
 
 </html>
+

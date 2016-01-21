@@ -1,6 +1,7 @@
 var java = require('java');
 
-java.classpath.push(__dirname + '/bin/electron-node-java-0.0.1-jar-with-dependencies.jar');
+java.classpath.push(__dirname +
+  '/bin/electron-node-java-0.0.1-jar-with-dependencies.jar');
 
 var repository = java.newInstanceSync('com.todo.Repository');
 
