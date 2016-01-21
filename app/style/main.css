@@ -31,8 +31,8 @@ section {
 }
 
 li {
-  list-style-image: url('../img/check.png');
   font-size: 20px;
+  list-style-image: url('../img/check.png');
 }
 
 .right {
