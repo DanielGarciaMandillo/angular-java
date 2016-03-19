@@ -2,6 +2,8 @@
 
 var gulp = require('gulp');
 var jetpack = require('fs-jetpack');
+var typescript = require('gulp-typescript');
+var tscConfig = require('../tsconfig.json');
 
 var projectDir = jetpack;
 var srcDir = projectDir.cwd('./app');
@@ -16,7 +18,7 @@ var paths = {
     './**/*.css',
     './**/*.+(jpg|png|svg)'
   ],
-}
+};
 
 // -------------------------------------
 // Tasks
@@ -29,23 +31,31 @@ gulp.task('clean', function (callback) {
 });
 
 var copyTask = function () {
-  return projectDir.copyAsync('app', destDir.path(), {
+  return projectDir.copy('app', destDir.path(), {
     overwrite: true,
     matching: paths.copyFromAppDir
   });
 };
 
-gulp.task('maven', function (callback) {
+gulp.task('typescript', ['clean'], function (callback) {
+  return gulp
+    .src('app/*.ts')
+    .pipe(typescript(tscConfig.compilerOptions))
+    .pipe(gulp.dest('build'));
+
+});
+
+gulp.task('maven', ['typescript'], function (callback) {
   var mvn = require('maven').create({
     cwd: './'
   });
   return mvn.execute(['clean', 'compile', 'assembly:single'], {});
 });
 
-gulp.task('copy', ['maven','clean'], copyTask);
+gulp.task('copy', ['typescript', 'maven'], copyTask);
 gulp.task('copy-watch', copyTask);
 
-gulp.task('finalize', ['maven','clean'], function () {
+gulp.task('finalize', ['maven'], function () {
   var manifest = srcDir.read('package.json', 'json');
 
   manifest.name += '-dev';
@@ -60,4 +70,4 @@ gulp.task('watch', function () {
   }, ['copy-watch']);
 });
 
-gulp.task('build', ['maven', 'copy', 'finalize']);
+gulp.task('build', ['clean', 'typescript', 'maven', 'copy', 'finalize']);
