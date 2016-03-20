@@ -12,7 +12,6 @@ header {
 }
 
 section {
-  float: left;
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -33,10 +32,6 @@ section {
 li {
   font-size: 20px;
   list-style-image: url('../img/check.png');
-}
-
-.right {
-  float: right;
 }
 
 .button {
