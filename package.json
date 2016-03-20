@@ -10,7 +10,11 @@
     "maven": "^3.0.6",
     "q": "^1.4.1",
     "tree-kill": "^0.1.1",
-    "yargs": "^3.15.0"
+    "yargs": "^3.15.0",
+    "gulp-typescript": "^2.12.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "typescript": "^1.8.2",
+    "typings": "^0.6.8"
   },
   "optionalDependencies": {
     "appdmg": "^0.3.2",
