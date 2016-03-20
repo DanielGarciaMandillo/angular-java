@@ -15,17 +15,17 @@ var Java = tsJavaModule.Java;
     </section>
     <section>
       <div class="title">{{listTitle}}</div>
-      <div id="results" class="results"></div>
+      <ul id="results" class="results">
+        <li *ngFor="#task of tasks">{{task}}</li>
+      </ul>
     </section>
     `
 })
 export class tfgTasks {
   private repository : Repository;
+  private tasks: string[];
 
   constructor() {
-   var tsJavaModule = require("./ts/tsJavaModule.js");
-   var Java = tsJavaModule.Java;
-
    Java.ensureJvm().then((): void => {
      var Repository = Java.importClass('Repository');
      this.repository = new Repository();
@@ -37,21 +37,22 @@ export class tfgTasks {
   }
 
   addTask() {
+    var Item = Java.importClass('Item');
     var name = document.getElementById('task').value;
     if (name) {
       document.getElementById('task').value = '';
-      var task = Java.newInstance('com.todo.Item', name);
+      var task : Item = new Item(name);
       this.repository.insertItem(task);
       this.getAllTasks();
     }
   }
 
   getAllTasks() {
-    var result = [];
+    var listAux = [];
     var tasksList = this.repository.getDataTable();
     for (var i = 0; i < tasksList.size(); i++) {
-      result.push("<li>" + tasksList.get(i).getName() + "</li>");
+      listAux.push(tasksList.get(i).getName());
     }
-    document.getElementById("results").innerHTML = result.join("");
+    this.tasks = listAux;
   }
 }
