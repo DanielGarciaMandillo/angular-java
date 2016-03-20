@@ -5,24 +5,31 @@
     <meta charset="utf-8">
     <title>Electron + Node-Java using BBDD H2</title>
     <link href="./style/main.css" rel="stylesheet" type="text/css">
+
+    <script src="lib/es6-shim.min.js"></script>
+    <script src="lib/system-polyfills.js"></script>
+    <script src="lib/angular2-polyfills.js"></script>
+    <script src="lib/system.src.js"></script>
+    <script src="lib/Rx.js"></script>
+    <script src="lib/angular2.dev.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('angularApp/main.js')
+                .then(null, console.error.bind(console));
+    </script>
 </head>
 
 <body>
-    <header>
-        <h1>Tasks done</h1>
-    </header>
-    <section class="right">
-        <input type="text" placeholder="Type tasks done: " id="task">
-        <a href="#" class="button" onclick="addTask()">Add task</a>
-    </section>
-    <section>
-        <div class="title">Tasks done:</div>
-        <div id="results" class="results"></div>
-    </section>
-    <footer>
-        Testing electron-node-java
-    </footer>
-    <script src="app.js"></script>
+    <my-app></my-app>
 </body>
 
 </html>
