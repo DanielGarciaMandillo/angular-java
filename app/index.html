@@ -12,7 +12,6 @@
     <script src="lib/system.src.js"></script>
     <script src="lib/Rx.js"></script>
     <script src="lib/angular2.dev.js"></script>
-    <script src="app.js"></script>
 
     <script>
         System.config({
@@ -23,7 +22,7 @@
                 }
             }
         });
-        System.import('angularApp/main.js')
+        System.import('app/main')
                 .then(null, console.error.bind(console));
     </script>
 </head>
