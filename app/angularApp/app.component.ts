@@ -5,7 +5,7 @@ import {TfgTasks} from './components/tfg-tasks.component';
 
 @Component({
   selector: "my-app",
-  templateUrl: "app/app.html",
+  templateUrl: "angularApp/app.html",
   directives: [TfgTitle, TfgFooter, TfgTasks]
 })
 
