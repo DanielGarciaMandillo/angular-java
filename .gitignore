@@ -12,4 +12,5 @@ Thumbs.db
 /tmp/
 /target/
 /app/bin
+/app/ts
 *.tar.gz*
