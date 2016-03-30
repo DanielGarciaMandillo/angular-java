@@ -6,7 +6,6 @@ node_modules
 .project
 .settings
 Thumbs.db
-
 /build/
 /releases/
 /tmp/
