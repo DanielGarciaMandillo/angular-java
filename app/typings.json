@@ -1,5 +1,9 @@
 {
   "ambientDependencies": {
-    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd"
+    "bluebird": "registry:dt/bluebird#2.0.0+20160319051630",
+    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
+    "java": "registry:dt/java#0.5.4+20160317120654",
+    "lodash": "registry:dt/lodash#3.10.0+20160327004937",
+    "node": "registry:dt/node#4.0.0+20160319033040"
   }
 }

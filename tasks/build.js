@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var jetpack = require('fs-jetpack');
 var tsc = require("gulp-typescript");
+var shell = require('gulp-shell');
 var sourcemaps  = require('gulp-sourcemaps');
 var tsProject = tsc.createProject("tsconfig.json");
 
@@ -43,6 +44,10 @@ gulp.task("compile", ['clean'], function () {
         .pipe(gulp.dest("build"));
 });
 
+gulp.task('typescript', ['clean'] , shell.task([
+  'cd app; ./node_modules/.bin/ts-java'
+]));
+
 
 gulp.task("resources", ['clean'] , function () {
     return gulp.src(["app/**/*", "!**/*.ts", "!**/node_modules/[!java]**"])
@@ -82,4 +87,4 @@ gulp.task('finalize', ['maven'], function () {
 });
 
 
-gulp.task('build', ['clean', 'compile', 'resources', 'libs', 'maven', 'finalize']);
+gulp.task('build', ['clean', 'compile', 'typescript','resources', 'libs', 'maven', 'finalize']);
