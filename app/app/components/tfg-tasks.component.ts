@@ -1,17 +1,13 @@
-import {Component, View} from 'angular2/core';
+import {Component, Input} from "angular2/core";
 var tsJavaModule = require("./ts/tsJavaModule.js");
 var Java = tsJavaModule.Java;
 
 @Component({
-  selector: 'tfg-tasks',
-  inputs: ['placeholder', 'buttonText', 'listTitle']
-})
-
-@View({
+  selector: "tfg-tasks",
   template: `
     <section class="right">
-      <input type="text" placeholder="{{placeholder}}" id="task">
-      <a href="#" class="button" (click)="addTask()">{{buttonText}}</a>
+      <input type="text" placeholder="{{placeholder}}" #input />
+      <a href="#" class="button" (click)="addTask(input.value)">{{buttonText}}</a>
     </section>
     <section>
       <div class="title">{{listTitle}}</div>
@@ -21,13 +17,19 @@ var Java = tsJavaModule.Java;
     </section>
     `
 })
-export class tfgTasks {
-  private repository : Repository;
+
+export class TfgTasks {
+  @Input() placeholder;
+  @Input() buttonText;
+  @Input() listTitle;
+
+  private repository;
   private tasks: string[];
 
   constructor() {
-   Java.ensureJvm().then((): void => {
-     var Repository = Java.importClass('Repository');
+
+    Java.ensureJvm().then((): void => {
+    var Repository = Java.importClass("Repository");
      this.repository = new Repository();
 
      this.repository.deleteTable();
@@ -36,12 +38,10 @@ export class tfgTasks {
    });
   }
 
-  addTask() {
-    var Item = Java.importClass('Item');
-    var name = document.getElementById('task').value;
+  addTask(name: string) {
+      var Item = Java.importClass("Item");
     if (name) {
-      document.getElementById('task').value = '';
-      var task : Item = new Item(name);
+      var task = new Item(name);
       this.repository.insertItem(task);
       this.getAllTasks();
     }
