@@ -15,6 +15,9 @@
 
     <script>
         System.config({
+            map: {
+                app: "./angularApp"
+            },
             packages: {
                 app: {
                     format: 'register',
@@ -22,7 +25,7 @@
                 }
             }
         });
-        System.import('app/main')
+        System.import('angularApp/main')
                 .then(null, console.error.bind(console));
     </script>
 </head>
