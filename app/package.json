@@ -20,8 +20,7 @@
     "path": "^0.12.7",
     "source-map-support": "^0.4.0",
     "ts-java": "^1.4.0",
-    "typescript": "^1.8.5",
-    "typings": "^0.6.8"
+    "typescript": "^1.8.5"
   },
   "tsjava": {
     "tsJavaModulePath": "./ts/tsJavaModule.ts",
@@ -32,8 +31,5 @@
       "com.todo.**"
     ],
     "classes": []
-  },
-  "scripts": {
-    "postinstall": "typings install"
   }
 }
