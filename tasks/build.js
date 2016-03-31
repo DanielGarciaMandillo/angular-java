@@ -36,7 +36,7 @@ gulp.task('clean', function () {
 
 
 gulp.task("compile", ['clean'], function () {
-    var tsResult = gulp.src(["app/**/*.ts", "!**/node_modules/**"])
+    var tsResult = gulp.src(["app/**/*.ts", "!**/node_modules/**", "!**/tsJavaModule**"])
         .pipe(sourcemaps.init())
         .pipe(tsc(tsProject));
     return tsResult.js
@@ -44,18 +44,13 @@ gulp.task("compile", ['clean'], function () {
         .pipe(gulp.dest("build"));
 });
 
-gulp.task('typescript', ['clean'] , shell.task([
-  'cd app; ./node_modules/.bin/ts-java'
-]));
-
-
-gulp.task("resources", ['clean'] , function () {
+gulp.task("resources", ['compile'] , function () {
     return gulp.src(["app/**/*", "!**/*.ts", "!**/node_modules/[!java]**"])
         .pipe(gulp.dest("build"));
 });
 
 
-gulp.task("libs", ['clean'] , function () {
+gulp.task("libs", ['resources'] , function () {
     return gulp.src([
             'app/node_modules/es6-shim/es6-shim.min.js',
             'app/node_modules/systemjs/dist/system-polyfills.js',
@@ -69,7 +64,7 @@ gulp.task("libs", ['clean'] , function () {
 });
 
 
-gulp.task('maven', ['clean'] , function () {
+gulp.task('maven', ['libs'] , function () {
   var mvn = require('maven').create({
     cwd: './'
   });
@@ -87,4 +82,4 @@ gulp.task('finalize', ['maven'], function () {
 });
 
 
-gulp.task('build', ['clean', 'compile', 'typescript','resources', 'libs', 'maven', 'finalize']);
+gulp.task('build', ['clean', 'compile','resources', 'libs', 'maven', 'finalize']);
