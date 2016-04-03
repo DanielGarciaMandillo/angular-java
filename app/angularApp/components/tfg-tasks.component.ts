@@ -1,6 +1,7 @@
 import {Component, Input} from "angular2/core";
-var tsJavaModule = require("./ts/tsJavaModule.js");
-var Java = tsJavaModule.Java;
+import {Java} from "../tsJavaModule";
+
+console.log(Java)
 
 @Component({
   selector: "tfg-tasks",
@@ -26,33 +27,33 @@ export class TfgTasks {
   private repository;
   private tasks: string[];
 
-  constructor() {
+  // constructor() {
 
-    Java.ensureJvm().then((): void => {
-    var Repository = Java.importClass("Repository");
-     this.repository = new Repository();
+  //   Java.ensureJvm().then((): void => {
+  //   var Repository = Java.importClass("Repository");
+  //    this.repository = new Repository();
 
-     this.repository.deleteTable();
-     this.repository.createTable();
-     this.getAllTasks();
-   });
-  }
+  //    this.repository.deleteTable();
+  //    this.repository.createTable();
+  //    this.getAllTasks();
+  //  });
+  // }
 
-  addTask(name: string) {
-      var Item = Java.importClass("Item");
-    if (name) {
-      var task = new Item(name);
-      this.repository.insertItem(task);
-      this.getAllTasks();
-    }
-  }
+  // addTask(name: string) {
+  //     var Item = Java.importClass("Item");
+  //   if (name) {
+  //     var task = new Item(name);
+  //     this.repository.insertItem(task);
+  //     this.getAllTasks();
+  //   }
+  // }
 
-  getAllTasks() {
-    var listAux = [];
-    var tasksList = this.repository.getDataTable();
-    for (var i = 0; i < tasksList.size(); i++) {
-      listAux.push(tasksList.get(i).getName());
-    }
-    this.tasks = listAux;
-  }
+  // getAllTasks() {
+  //   var listAux = [];
+  //   var tasksList = this.repository.getDataTable();
+  //   for (var i = 0; i < tasksList.size(); i++) {
+  //     listAux.push(tasksList.get(i).getName());
+  //   }
+  //   this.tasks = listAux;
+  // }
 }
