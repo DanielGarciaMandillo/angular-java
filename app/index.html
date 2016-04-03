@@ -12,11 +12,23 @@
     <script src="lib/system.src.js"></script>
     <script src="lib/Rx.js"></script>
     <script src="lib/angular2.dev.js"></script>
-
     <script>
         System.config({
             map: {
-                app: "./angularApp"
+                app: "./angularApp",
+                "bluebird": "node_modules/bluebird/js/browser/bluebird.min.js",
+                "lodash": "node_modules/lodash/lodash.js",
+                "async": "node_modules/java/node_modules/async/lib/async.js",
+                "java": "node_modules/java/lib/nodeJavaBridge.js",
+                "path": "jspm_packages/github/jspm/nodelibs-path@0.1.0/index.js",
+                "fs": "jspm_packages/github/jspm/nodelibs-fs@0.1.2/index.js",
+                "path-browserify": "jspm_packages/npm/path-browserify@0.0.0/index.js",
+                "process": "jspm_packages/npm/process@0.11.2/index.js"
+            },
+            meta: {
+                "java": {
+                    format: "amd"
+                }
             },
             packages: {
                 app: {

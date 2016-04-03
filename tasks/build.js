@@ -36,7 +36,7 @@ gulp.task('clean', function () {
 
 
 gulp.task("compile", ['clean'], function () {
-    var tsResult = gulp.src(["app/**/*.ts", "!**/node_modules/**", "!**/tsJavaModule**"])
+    var tsResult = gulp.src(["app/**/*.ts", "!**/node_modules/**"])
         .pipe(sourcemaps.init())
         .pipe(tsc(tsProject));
     return tsResult.js
@@ -45,7 +45,7 @@ gulp.task("compile", ['clean'], function () {
 });
 
 gulp.task("resources", ['compile'] , function () {
-    return gulp.src(["app/**/*", "!**/*.ts", "!**/node_modules/[!java]**"])
+    return gulp.src(["app/**/*", "!app/**/*.ts", "!**/node_modules/[!java]**"])
         .pipe(gulp.dest("build"));
 });
 
