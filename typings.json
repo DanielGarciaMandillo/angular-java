@@ -1,0 +1,12 @@
+{
+  "name": "@angular2/electron",
+  "devDependencies": {},
+  "ambientDependencies": {
+    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
+    "github-electron": "github:DefinitelyTyped/DefinitelyTyped/github-electron/github-electron.d.ts#f16c4922a7dd6d359a197e4cc5103463ba68cf9e",
+    "bluebird": "registry:dt/bluebird#2.0.0+20160319051630",
+    "java": "registry:dt/java#0.5.4+20160317120654",
+    "lodash": "registry:dt/lodash#3.10.0+20160327004937",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#138ad74b9e8e6c08af7633964962835add4c91e2"
+  }
+}

@@ -1,9 +1,0 @@
-#!/bin/sh
-cd /opt/electron-node-java/;
-sudo mkdir -p /usr/lib/jvm/java-8-oracle/jre;
-sudo mv jre-8u66-linux-x64.tar.gz /usr/lib/jvm/java-8-oracle;
-cd /usr/lib/jvm/java-8-oracle;
-sudo tar zxvf jre-8u66-linux-x64.tar.gz;
-sudo rm -rf jre;
-sudo mv jre1.8.0_66 jre;
-sudo rm -rf jre1.8.0_66:
