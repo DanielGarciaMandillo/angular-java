@@ -1,7 +1,7 @@
 {
-  "name": "@angular2/electron",
+  "name": "",
   "version": "1.0.0",
-  "description": "Electron Platform for Angular2",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
@@ -14,20 +14,10 @@
     "demo": "npm run build && npm run build_demo && electron ./demo",
     "start": "npm run demo"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/angular/angular-electron.git"
-  },
   "keywords": [
     "Angular2",
     "Electron"
   ],
-  "author": "Rob Wormald <robwormald@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/angular/angular-electron/issues"
-  },
-  "homepage": "https://github.com/angular/angular-electron#readme",
   "devDependencies": {
     "bluebird": "^3.3.4",
     "electron-prebuilt": "^0.37.2",
