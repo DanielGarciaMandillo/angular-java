@@ -1,5 +1,5 @@
 node_modules/
-dist/
+releases/
 typings/
 npm-debug.log
 .DS_Store
