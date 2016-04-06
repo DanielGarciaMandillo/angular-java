@@ -13,6 +13,7 @@ exports.ELECTRON_APP_APPLICATION = [
     new core_1.Provider(core_1.APP_INITIALIZER, { useValue: function () { }, multi: true })
 ];
 var applicationRef;
+var webcontents;
 function createMessageBus(zone) {
     var sink = new electron_message_bus_1.ElectronMessageBusSink(applicationRef.webContents);
     var source = new electron_message_bus_1.ElectronMessageBusSource(electron.ipcMain);
@@ -35,8 +36,13 @@ function waitForPingback() {
     });
 }
 function initializeMainWindow() {
-    applicationRef = new electron.BrowserWindow();
-    applicationRef.loadURL("file://" + process.cwd() + "/index.html");
+    applicationRef = new electron.BrowserWindow({
+        width: 1280,
+        height: 1024,
+    });
+    webcontents = applicationRef.webContents;
+    webcontents.openDevTools();
+    applicationRef.loadURL('file:// ' + __dirname + '/../../index.html');
 }
 function bootstrap(appComp, providers) {
     parse5_adapter_1.Parse5DomAdapter.makeCurrent();

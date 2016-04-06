@@ -3,5 +3,5 @@ releases/
 typings/
 npm-debug.log
 .DS_Store
-demo/*.js
+demo/**/*.js
 tmp
