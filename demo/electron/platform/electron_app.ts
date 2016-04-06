@@ -15,6 +15,7 @@ export const ELECTRON_APP_APPLICATION: Array<any /*Type | Provider | any[]*/> = 
 ];
 
 let applicationRef:Electron.BrowserWindow;
+let webcontents: Electron.WebContents;
 
 function createMessageBus(zone: NgZone): MessageBus {
   let sink = new ElectronMessageBusSink(applicationRef.webContents);
@@ -41,8 +42,14 @@ function waitForPingback(){
 }
 
 function initializeMainWindow(){
-  applicationRef = new electron.BrowserWindow();
-  applicationRef.loadURL(`file://${process.cwd()}/index.html`);
+  applicationRef = new electron.BrowserWindow({
+    width:1280,
+    height: 1024,
+  });
+  webcontents = applicationRef.webContents;
+  webcontents.openDevTools();
+
+  applicationRef.loadURL('file:// '+ __dirname +'/../../index.html');
 }
 
 export function bootstrap(appComp: any, providers?: any) {
