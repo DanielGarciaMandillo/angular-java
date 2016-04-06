@@ -1,7 +1,4 @@
 {
-  "name": "",
-  "version": "1.0.0",
-  "description": "",
   "scripts": {
     "clean": "rimraf dist",
     "typings-install": "typings install",
@@ -31,6 +28,11 @@
     "angular2": "2.0.0-beta.12"
   },
   "dependencies": {
-    "parse5": "^1.5.1"
+    "parse5": "^1.5.1",
+    "asar": "^0.7.2",
+    "fs-jetpack": "^0.7.0",
+    "gulp-util": "^3.0.6",
+    "q": "^1.4.1",
+    "yargs": "^3.15.0"
   }
 }

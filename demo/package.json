@@ -1,5 +1,8 @@
 {
-  "name"    : "angular-electron-demo",
-  "version" : "1.0.0",
+  "name": "electron-angular-java",
+  "productName": "electron-angular-java",
+  "description": "Build cross platform desktop apps with web technologies using java from javascript",
+  "version": "0.1.5",
+  "author": "Daniel Garcia Mandillo",
   "main"    : "main.js"
 }
