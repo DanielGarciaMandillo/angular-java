@@ -42,7 +42,7 @@ function waitForPingback(){
 
 function initializeMainWindow(){
   applicationRef = new electron.BrowserWindow();
-  applicationRef.loadURL(`file://${process.cwd()}/demo/index.html`);
+  applicationRef.loadURL(`file://${process.cwd()}/index.html`);
 }
 
 export function bootstrap(appComp: any, providers?: any) {
