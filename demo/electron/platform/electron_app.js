@@ -36,7 +36,7 @@ function waitForPingback() {
 }
 function initializeMainWindow() {
     applicationRef = new electron.BrowserWindow();
-    applicationRef.loadURL("file://" + process.cwd() + "/demo/index.html");
+    applicationRef.loadURL("file://" + process.cwd() + "/index.html");
 }
 function bootstrap(appComp, providers) {
     parse5_adapter_1.Parse5DomAdapter.makeCurrent();

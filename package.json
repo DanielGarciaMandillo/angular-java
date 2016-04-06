@@ -1,34 +1,9 @@
 {
   "scripts": {
-    "clean": "rimraf dist",
-    "typings-install": "typings install",
-    "setup": "npm install --no-optional && npm run typings-install && npm run setup-demo",
-    "setup-demo": "npm install --no-optional angular2@2.0.0-beta.12 es6-promise@3.1.2 es6-shim@0.35.0 reflect-metadata@0.1.2 rxjs@5.0.0-beta.2 zone.js@0.6.6",
-    "build": "npm run clean && tsc",
-    "build_demo": "tsc typings/browser.d.ts demo/main.ts demo/app_ui.ts demo/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata",
-    "test": "echo Not supported yet",
-    "demo": "npm run build && npm run build_demo && electron ./demo",
-    "start": "npm run demo"
-  },
-  "keywords": [
-    "Angular2",
-    "Electron"
-  ],
-  "devDependencies": {
-    "bluebird": "^3.3.4",
-    "electron-prebuilt": "^0.37.2",
-    "java": "^0.6.1",
-    "lodash": "^4.7.0",
-    "path": "^0.12.7",
-    "rimraf": "^2.5.2",
-    "source-map-support": "^0.4.0",
-    "typescript": "^1.8.9"
-  },
-  "peerDependencies": {
-    "angular2": "2.0.0-beta.12"
+    "build": "npm install && cd demo && npm run build",
+    "start": "cd demo && npm start"
   },
   "dependencies": {
-    "parse5": "^1.5.1",
     "asar": "^0.7.2",
     "fs-jetpack": "^0.7.0",
     "gulp-util": "^3.0.6",
