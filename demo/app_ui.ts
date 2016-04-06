@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {bootstrapElectronRenderer} from '../dist/renderer';
+import {bootstrapElectronRenderer} from './electron/renderer';
 
 bootstrapElectronRenderer();
 
