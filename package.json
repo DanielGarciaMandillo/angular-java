@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "npm install && cd app && npm install",
-    "start": "cd build && npm start"
+    "start": "gulp build && cd build && npm start"
   },
   "dependencies": {
     "asar": "^0.7.2",
