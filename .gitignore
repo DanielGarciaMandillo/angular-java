@@ -1,9 +1,10 @@
 .DS_Store
 app/**/*.js
+app/java
 bin
+build
 node_modules
 npm-debug.log
 releases/
 tmp
 typings/
-build
