@@ -20,6 +20,11 @@ export class App {
 
     Java.ensureJvm().then((): void => {
 	    this.name = "Daniel García";
+	    setTimeout(() => {
+	    	var Item = Java.importClass("Item");
+				var item: any = new Item("Daniel")
+	    	this.name = item.getName();
+			},2500);
    });
 	}
 }
