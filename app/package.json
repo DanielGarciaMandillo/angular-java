@@ -1,35 +1,37 @@
 {
-  "name": "electron-node-java",
-  "productName": "Electron Node-Java",
+  "name": "electron-angular-java",
+  "productName": "electron-angular-java",
   "description": "Build cross platform desktop apps with web technologies using java from javascript",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "author": "Daniel Garcia Mandillo",
-  "main": "browser.js",
-  "dependencies": {
+  "main"    : "main.js",
+  "scripts": {
+    "postinstall": "typings install",
+    "start": "electron ."
+  },
+  "keywords": [
+    "Angular2",
+    "Electron",
+    "Typescript",
+    "Java"
+  ],
+  "devDependencies": {
+    "bluebird": "^3.3.4",
+    "electron-prebuilt": "^0.37.2",
+    "java": "^0.6.1",
+    "lodash": "^4.7.0",
+    "path": "^0.12.7",
+    "rimraf": "^2.5.2",
+    "source-map-support": "^0.4.0",
+    "typescript": "^1.8.9",
     "angular2": "2.0.0-beta.12",
-    "es6-shim": "^0.35.0",
+    "es6-shim": "0.35.0",
+    "es6-promise": "3.1.2",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
-    "systemjs": "0.19.24",
     "zone.js": "0.6.6"
-    },
-  "devDependencies": {
-    "bluebird": "^2.9.24",
-    "java": "^0.6.0",
-    "lodash": "^4.6.1",
-    "path": "^0.12.7",
-    "source-map-support": "^0.4.0",
-    "ts-java": "^1.4.0",
-    "typescript": "^1.8.5"
   },
-  "tsjava": {
-    "tsJavaModulePath": "./ts/tsJavaModule.ts",
-    "classpath": [
-      "bin/*.jar"
-    ],
-    "packages": [
-      "com.todo.**"
-    ],
-    "classes": []
+  "dependencies": {
+    "parse5": "^1.5.1"
   }
 }

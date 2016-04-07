@@ -1,5 +1,23 @@
+# Angular Electron
+
+Requeriments:
+
+Node v5
+npm v3
+
+1) Clone repository
+
+2) npm run build (Download dependencies npm and build project)
+
+3) npm start
+
+Creating package:
+
+```gulp release```
+
 # electron-node-java
 
+#Next Deprecated:
 
 Build cross platform desktop apps with web technologies using java from javascript
 
@@ -7,7 +25,7 @@ Build cross platform desktop apps with web technologies using java from javascri
 - [Node-java project]
 - Based on [Electron boilerplate] for build compilation packages (Linux, Windows and Mac)
 
-# Guide to developers 
+# Guide to developers
 
 This guide will be seen by the developer
 
@@ -49,21 +67,21 @@ Now you can use the application:
 
 ##Changing code
 
-- When java code changes in native java project you should generate a new jar: 
+- When java code changes in native java project you should generate a new jar:
     * Type ```npm start```, that includes a maven command for generate it.
 - When javascript code changes you should restart the browser. Two ways:
-	* In browser > Edit > View Reload or use shortcut ```Ctrl + R```
+  * In browser > Edit > View Reload or use shortcut ```Ctrl + R```
 
 ## JVM embedded
 
 This project includes a JVM so the user does not have to install it. You can create a JVM embedded in two steps:
 
-1) Copy JVM and postinst in debian package directory (file release_[YourSystem].js): 
+1) Copy JVM and postinst in debian package directory (file release_[YourSystem].js):
 
 ```js
   //Copy jvm
   projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
-  
+
   // Copy preinst
   var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
   packDir.write('DEBIAN/postinst', postinst);
@@ -113,10 +131,10 @@ A basic electron-node-java application needs just these files:
 * src/main/java - Folder with java project sources.
 * bin - Folder with required jars.
 * app - Folder with code using java-node.
-	* app.js - Javascript code using java-node.
-	* index.html - A web page to render.
-	* browser.js - Starts the app and creates a browser window to render HTML (NodeJS file).
-	* package.json - Points to the app's main file and lists its details and dependencies of APPLICATION project.
+  * app.js - Javascript code using java-node.
+  * index.html - A web page to render.
+  * browser.js - Starts the app and creates a browser window to render HTML (NodeJS file).
+  * package.json - Points to the app's main file and lists its details and dependencies of APPLICATION project.
 * resources - resources for particular operating system. You can change logo package or write script pre/post install package (in this example a JRE is installed).
 * releases - packages created to install in OS (Windows, Debian or Mac)
 * tasks - build and development environment scripts.
@@ -134,7 +152,7 @@ daniel.garciamandillo@gmail.com
 [NodeJS]: https://nodejs.org
 [Python 2.X]: https://www.python.org/downloads
 [Maven]: http://maven.apache.org/download.cgi
-[VisualStudio 2013]: https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#DownloadFamilies_2 
+[VisualStudio 2013]: https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#DownloadFamilies_2
 [supported platforms]: https://github.com/atom/electron/blob/master/docs/tutorial/supported-platforms.md
 [supported JVM]: https://github.com/joeferner/node-java/blob/master/README.md
 [NSIS 3.X]: http://nsis.sourceforge.net/Main_Page
