@@ -7,11 +7,12 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"declaration": true,
-		"moduleResolution": "node"
+		"moduleResolution": "node",
+    "outDir":"./build/electron"
     },
     "files": [
 		"typings/browser.d.ts",
-		"./demo/electron/renderer.ts",
-		"./demo/electron/main.ts"
+		"./app/electron/renderer.ts",
+		"./app/electron/main.ts"
 	]
 }

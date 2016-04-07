@@ -1,13 +1,16 @@
 {
   "scripts": {
-    "build": "npm install && cd demo && npm run build",
-    "start": "cd demo && npm start"
+    "build": "npm install && cd app && npm install",
+    "start": "cd app && npm start"
   },
   "dependencies": {
     "asar": "^0.7.2",
     "fs-jetpack": "^0.7.0",
+    "gulp-shell": "^0.5.2",
     "gulp-util": "^3.0.6",
+    "maven": "^3.0.6",
     "q": "^1.4.1",
+    "ts-java": "^1.4.0",
     "yargs": "^3.15.0"
   }
 }
