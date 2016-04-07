@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /opt/electron-node-java/;
+cd /opt/electron-angular-java/;
 sudo mkdir -p /usr/lib/jvm/java-8-oracle/jre;
 sudo mv jre-8u66-linux-x64.tar.gz /usr/lib/jvm/java-8-oracle;
 cd /usr/lib/jvm/java-8-oracle;
