@@ -1,38 +1,9 @@
-<!doctype html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Electron + Node-Java using BBDD H2</title>
-    <link href="./style/main.css" rel="stylesheet" type="text/css">
-
-    <script src="lib/es6-shim.min.js"></script>
-    <script src="lib/system-polyfills.js"></script>
-    <script src="lib/angular2-polyfills.js"></script>
-    <script src="lib/system.src.js"></script>
-    <script src="lib/Rx.js"></script>
-    <script src="lib/angular2.dev.js"></script>
-
-    <script>
-        System.config({
-            map: {
-                app: "./angularApp"
-            },
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('angularApp/main')
-                .then(null, console.error.bind(console));
-    </script>
-</head>
-
-<body>
-    <my-app></my-app>
-</body>
-
+	<head>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+		<script src="app_ui.js"></script>
+	</head>
+	<body>
+		<app>Loading...</app>
+	</body>
 </html>
-
