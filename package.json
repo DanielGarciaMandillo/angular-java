@@ -1,24 +1,27 @@
 {
-  "devDependencies": {
+  "scripts": {
+    "build": "npm install && cd app && npm install",
+    "start": "gulp build && cd build && npm start"
+  },
+  "dependencies": {
     "asar": "^0.7.2",
-    "electron-prebuilt": "^0.35.1",
     "fs-jetpack": "^0.7.0",
-    "gulp": "^3.9.0",
     "gulp-shell": "^0.5.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-typescript": "^2.12.0",
     "gulp-util": "^3.0.6",
     "maven": "^3.0.6",
     "q": "^1.4.1",
-    "tree-kill": "^0.1.1",
+    "ts-java": "^1.4.0",
     "yargs": "^3.15.0"
   },
-  "optionalDependencies": {
-    "appdmg": "^0.3.2",
-    "rcedit": "^0.3.0"
-  },
-  "scripts": {
-    "release": "gulp release --env=production",
-    "start": "node ./tasks/start"
+  "tsjava": {
+    "tsJavaModulePath": "./app/java/tsJavaModule.ts",
+    "javaTypingsPath": "../../typings/browser.d.ts",
+    "classpath": [
+      "app/bin/*.jar"
+    ],
+    "packages": [
+      "com.todo.**"
+    ],
+    "classes": []
   }
 }
