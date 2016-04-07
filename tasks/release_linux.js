@@ -4,7 +4,7 @@ var Q = require('q');
 var gulpUtil = require('gulp-util');
 var childProcess = require('child_process');
 var jetpack = require('fs-jetpack');
-var asar = require('asar');
+var fs = require('fs');
 var utils = require('./utils');
 
 var projectDir;
@@ -19,7 +19,7 @@ var init = function () {
     projectDir = jetpack;
     tmpDir = projectDir.dir('./tmp', { empty: true });
     releasesDir = projectDir.dir('./releases');
-    manifest = projectDir.read('demo/package.json', 'json');
+    manifest = projectDir.read('build/package.json', 'json');
     packName = manifest.name + '_' + manifest.version;
     packDir = tmpDir.dir(packName);
     readyAppDir = packDir.cwd('opt', manifest.name);
@@ -28,11 +28,11 @@ var init = function () {
 };
 
 var copyRuntime = function () {
-    return projectDir.copyAsync('demo/node_modules/electron-prebuilt/dist', readyAppDir.path(), { overwrite: true });
+    return projectDir.copyAsync('app/node_modules/electron-prebuilt/dist', readyAppDir.path(), { overwrite: true });
 };
 
 var packageBuiltApp = function () {
-    projectDir.copy('demo', readyAppDir.path('resources/app'));
+    projectDir.copy('build', readyAppDir.path('resources/app'));
 
     return Q();
 };
@@ -80,6 +80,13 @@ var packToDebFile = function () {
         size: appSize
     });
     packDir.write('DEBIAN/control', control);
+
+    // Copy jvm
+    projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
+    // Copy preinst
+    var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
+    packDir.write('DEBIAN/postinst', postinst);
+    fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
 
     // Build the package...
     childProcess.exec('fakeroot dpkg-deb -Zxz --build ' + packDir.path().replace(/\s/g, '\\ ') + ' ' + debPath.replace(/\s/g, '\\ '),
