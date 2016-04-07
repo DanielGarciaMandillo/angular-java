@@ -6,5 +6,7 @@ build
 node_modules
 npm-debug.log
 releases/
+resources/**/*tar.gz*
+target
 tmp
 typings/
