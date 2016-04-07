@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Java} from './tsJavaModule';
+import {Java} from '../java/tsJavaModule';
 import {TfgTitle} from './tfg-title.component';
 
 @Component({
