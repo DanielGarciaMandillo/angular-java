@@ -38,7 +38,7 @@ gulp.task('java', ['maven'], shell.task([
   './node_modules/.bin/ts-java'
 ]));
 
-gulp.task('compile', shell.task([
+gulp.task('compile', ['java'], shell.task([
   'tsc',
   'tsc typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
 ]));

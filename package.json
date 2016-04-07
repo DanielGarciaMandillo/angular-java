@@ -12,5 +12,16 @@
     "q": "^1.4.1",
     "ts-java": "^1.4.0",
     "yargs": "^3.15.0"
+  },
+  "tsjava": {
+    "tsJavaModulePath": "./app/java/tsJavaModule.ts",
+    "javaTypingsPath": "../../typings/browser.d.ts",
+    "classpath": [
+      "app/bin/*.jar"
+    ],
+    "packages": [
+      "com.todo.**"
+    ],
+    "classes": []
   }
 }

@@ -20,6 +20,11 @@ var App = (function () {
         }, 1000);
         tsJavaModule_1.Java.ensureJvm().then(function () {
             _this.name = "Daniel García";
+            setTimeout(function () {
+                var Item = tsJavaModule_1.Java.importClass("Item");
+                var item = new Item("Daniel");
+                _this.name = item.getName();
+            }, 2500);
         });
     }
     App = __decorate([
