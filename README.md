@@ -9,7 +9,6 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
 ```
     --- src |--- main/java > java code...
             |--- test/java > java test code...
-    --- resources ...
     --- pom.xml
 ```
 ### Integrar el proyecto Electron Java Angular
@@ -35,31 +34,42 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
 
 ### Frontend con Java
 
-- ***Angular-Electron API: Basado en [angular-electron][ae1]***
-    : La estructura del API es el siguiente:
-    : -- __Carpeta electron__: aquí encontramos el nucleo de la aplicación encargado de que todo el código sea ejecutado en el proceso principal de Electron.
-    : -- __Archivos app_ui.ts y main.ts__: de esta forma se carga el proceso de renderizado del browser.
+- ***Angular-Electron API: Basado en [angular-electron][ae1].***
+    
+    
+    La estructura del API es el siguiente:
+    - __Carpeta electron__: aquí encontramos el nucleo de la aplicación encargado de que todo el código sea ejecutado en el proceso principal de Electron.
+    - __Archivos app_ui.ts y main.ts__: de esta forma se carga el proceso de renderizado del browser.
 
 - ***Actualización de la API Angular-Electron***
-    : Se debe tener en cuenta que el core principal del proyecto está basado en [angular-electron][ae1], este puede que se actualize y necesitemos alguna funcionalidad actualizada para poder beneficiarnos de la actualización.
+    
+
+    Se debe tener en cuenta que el core principal del proyecto está basado en [angular-electron][ae1], este puede que se actualize y necesitemos alguna funcionalidad nueva para poder beneficiarnos de ella.
+    
     En este caso se debe tener en cuenta varios aspectos:
-    1. Actualizar únicamente los archivos de la carpeta "electron" y los archivos "app_ui.ts y main.ts" manteniendo las rutas de los imports de forma correcta en nuestro proyecto. En el caso de que haya nuevos archivos añadirlos siguiendo un órden lógico en el árbol de carpetas.
-    2. Revisar las versiones de las dependencias en el archivo package.json de la carpeta *app*, si el proyecto se actualiza es posible que las versiones hayan cambiado.
+    
+    1. Actualizar únicamente los archivos de la carpeta __"electron"__ y los archivos __"app_ui.ts y main.ts"__ manteniendo las rutas de los imports de forma correcta en nuestro proyecto. En el caso de que haya nuevos archivos añadirlos siguiendo un órden lógico en el árbol de carpetas.
+    2. Revisar las versiones de las dependencias en el archivo package.json de la carpeta __"app"__, si el proyecto se actualiza es posible que las versiones hayan cambiado.
 
         **Ayuda a la comunidad!** Con el fin de tener el proyecto actualizado, se sugiere que si se ha necesitado actualizar dicho proyecto y se haya comprobado que todo es correcto, hacer un pull-request al proyecto [Electron Node Angular][eja1] para poder aprobarlo y que no quede obsoleto.
 
 - ***Manejo de la API Angular-Electron***
-    : Manejo de electron API: ¿qué podemos modificar de estos archivos? La mayoría de estos archivos son de arquitectura de la aplicación y permiten la comunicación ICP entre el proceso principal y el proceso de renderizado uniendo Angular y Electron, pero ¿qué cosas pueden ser útiles para un desarrollador?.
 
-         - ***Archivo electron_app.ts :***
-            nos encontramos con la función initializeMainWindow(). En ella se puede modificar las dimensiones del browser, la url que debe cargar al iniciarse o si se quiere que por defecto se abran las devTools de Chrome (por defecto están abiertas ya que para el desarrollador son muy útiles pero quizás para un usuario final esto no lo queremos, pues se desactivan desde está función)
+    Manejo de electron API: ¿qué podemos modificar de estos archivos? 
+    La mayoría de estos archivos son de arquitectura de la aplicación y permiten la comunicación ICP entre el proceso principal y el proceso de renderizado uniendo Angular y Electron, pero ¿qué cosas pueden ser útiles para un desarrollador?.
+
+    - ***Archivo electron_app.ts :***
+    nos encontramos con la función initializeMainWindow().
+    En ella se puede modificar las dimensiones del browser, la url que debe cargar al iniciarse o si se quiere que por defecto se abran las devTools de Chrome (por defecto están abiertas ya que para el desarrollador son muy útiles pero quizás para un usuario final esto no lo queremos, pues se desactivan desde está función)
 
 * ***Carpeta app:***
-    : En esta carpeta nos encontramos con lo siguiente:
-    : * ***Electron API:*** explicado anteriormente
-    : * ***Carpeta angular:*** en esta carpeta están los archivos desarrollados relacionados con Angular 2 y en la que se deben incluir los archivos nuevos desarrollados.
-    : * ***Archivo index.html:*** es el archivo html principal de la aplicación y el que se carga en el momento que inicia la aplicación. Debe contener los polyfills de Angular y cargar el archivo app_ui mediante el tag <script>. El resto del contenido debe ser desarrollado por el programador como un index normal.
-    : * ***Archivo package.json:*** carga de dependencias para el correcto funcionamiento de la aplicación.
+
+    En esta carpeta nos encontramos con lo siguiente:
+    
+    * ***Electron API:*** explicado anteriormente
+    * ***Carpeta angular:*** en esta carpeta están los archivos desarrollados relacionados con Angular 2 y en la que se deben incluir los archivos nuevos desarrollados.
+    * ***Archivo index.html:*** es el archivo html principal de la aplicación y el que se carga en el momento que inicia la aplicación. Debe contener los polyfills de Angular y cargar el archivo app_ui con el tag html ```<script>```. El resto del contenido debe ser desarrollado por el programador como un index normal.
+    * ***Archivo package.json:*** carga de dependencias para el correcto funcionamiento de la aplicación.
 
 ### Ejecutar la aplicación
 
@@ -68,8 +78,8 @@ Los siguientes requisitos son necesarios para ejecutar correctamente un proyecto
 
   - [Node 5][node5]
   - [Npm 3][npm3]
-  - [Typescript (node module global)][ts]
-  - [Typings (node module global)][typ]
+  - [Typescript (install global)][ts]
+  - [Typings (install global)][typ]
   - [Python 2.X][pyth]
 
   * [Plataformas soportadas][suppElec] por Electron
@@ -90,7 +100,7 @@ En la raiz del proyecto ejecutar:
 ```sh
 npm start
 ```
-  Este comando tiene el siguiente ciclo de vida:
+  Este comando tiene el siguiente __ciclo de vida:__
 
 1. Ejecuta Maven para generar el .jar.
 2. Ejecuta ts-java generando y preparando los objetos y clases Java para poder usarlos desde Angular.
@@ -101,6 +111,8 @@ npm start
 Por el momento, solo se usa un jar en el que se debe integrar todas las dependencias en él. Para ello hay que indicar en el pom.xml del proyecto Java que haga esa tarea:
 
 ```xml
+..
+..
 <plugin>
 <artifactId>maven-assembly-plugin</artifactId>
 <configuration>
