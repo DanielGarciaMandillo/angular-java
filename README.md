@@ -44,7 +44,7 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
 - ***Actualización de la API Angular-Electron***
     
 
-    Se debe tener en cuenta que el core principal del proyecto está basado en [angular-electron][ae1], este puede que se actualize y necesitemos alguna funcionalidad nueva para poder beneficiarnos de ella.
+    Se debe tener en cuenta que el core principal del proyecto está basado en [angular-electron][ae1], este puede que se actualice y necesitemos alguna funcionalidad nueva para poder beneficiarnos de ella.
     
     En este caso se debe tener en cuenta varios aspectos:
     
