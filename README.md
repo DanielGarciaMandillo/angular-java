@@ -81,7 +81,6 @@ Los siguientes requisitos son necesarios para ejecutar correctamente un proyecto
   - [Typescript (install global)][ts]
   - [Typings (install global)][typ]
   - [Python 2.X][pyth]
-
   * [Plataformas soportadas][suppElec] por Electron
   * [JVM soportadas][suppJava] por node-java
 
