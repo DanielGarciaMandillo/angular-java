@@ -67,9 +67,9 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
     En esta carpeta nos encontramos con lo siguiente:
     
     * ***Electron API:*** explicado anteriormente
-    * ***Carpeta angular:*** en esta carpeta están los archivos desarrollados relacionados con Angular 2 y en la que se deben incluir los archivos nuevos desarrollados.
-    * ***Archivo index.html:*** es el archivo html principal de la aplicación y el que se carga en el momento que inicia la aplicación. Debe contener los polyfills de Angular y cargar el archivo app_ui con el tag html ```<script>```. El resto del contenido debe ser desarrollado por el programador como un index normal.
-    * ***Archivo package.json:*** carga de dependencias para el correcto funcionamiento de la aplicación.
+    * ***Angular:*** en esta carpeta están los archivos desarrollados relacionados con Angular 2 y en la que se deben incluir los archivos nuevos desarrollados.
+    * ***index.html:*** es el archivo html principal de la aplicación y el que se carga en el momento que inicia la aplicación. Debe contener los polyfills de Angular y cargar el archivo app_ui con el tag html ```<script>```. El resto del contenido debe ser desarrollado por el programador como un index normal.
+    * ***package.json:*** carga de dependencias para el correcto funcionamiento de la aplicación.
 
 ### Ejecutar la aplicación
 
@@ -85,7 +85,7 @@ Los siguientes requisitos son necesarios para ejecutar correctamente un proyecto
   * [Plataformas soportadas][suppElec] por Electron
   * [JVM soportadas][suppJava] por node-java
 
-##### Descarga de dependencias:
+##### Descarga de dependencias
 
   En la raiz del proyecto ejecutar:
 
@@ -122,37 +122,39 @@ Por el momento, solo se usa un jar en el que se debe integrar todas las dependen
   </descriptorRefs>
 </configuration>
 </plugin>
+..
+..
 ```
 
 ### Usar Java en Angular (node-java y ts-java)
 
 Para poder usar tanto los objetos, clases, interefaces... de Java en el frontend necesitamos dos herramientas:
 
- : * ***node-java*** es un paquete Node que proporciona una API entre aplicaciones Node y aplicaciones Java que permite usar Java en código Javascript
+ * ***node-java*** es un paquete Node que proporciona una API entre aplicaciones Node y aplicaciones Java que permite usar Java en código Javascript
 
- : * ***ts-java*** es una herramienta que genera ficheros Typescript respecto a clases Java, permitiendo usar clases Java en lenguaje Typescript encapsulando el archivo que genera el paquete node-java.
+ * ***ts-java*** es una herramienta que genera ficheros Typescript respecto a clases Java, permitiendo usar clases Java en lenguaje Typescript encapsulando el archivo que genera el paquete node-java.
 
-        Se puede configurar en el fichero package.json de la raiz del proyecto:
-        ```json
-          "tsjava":
-            {
-              "tsJavaModulePath": "./app/java/tsJavaModule.ts",
-              "javaTypingsPath": "../../typings/browser.d.ts",
-              "classpath": [
-                  "app/bin/*.jar"
-                ],
-              "packages": [
-                "com.todo.**"
-              ]
-            }
-        ```
-        Principales propiedades:
-        : -- tsJavaModulePath : indica donde se generan todos los objetos Java en lenguaje typescript
-        : -- javaTypingsPath : indica donde se encuentran los typings necesarios en la compilación typescript
-        : -- classpath: indica donde se encuentra el jar que se va a utilizar
-        : -- packages: un array que contiene los paquetes que queremos exportar como modulos typescript
-
-        Documentación completa de la herramienta [ts-java][tsJava]
+    Se puede configurar en el fichero package.json de la raiz del proyecto:
+    ```json
+      "tsjava":
+        {
+          "tsJavaModulePath": "./app/java/tsJavaModule.ts",
+          "javaTypingsPath": "../../typings/browser.d.ts",
+          "classpath": [
+              "app/bin/*.jar"
+            ],
+          "packages": [
+            "com.todo.**"
+          ]
+        }
+    ```
+    Principales propiedades:
+    - tsJavaModulePath : indica donde se generan todos los objetos Java en lenguaje typescript
+    - javaTypingsPath : indica donde se encuentran los typings necesarios en la compilación typescript
+    - classpath: indica donde se encuentra el jar que se va a utilizar
+    - packages: un array que contiene los paquetes que queremos exportar como modulos typescript
+    
+    Documentación completa de la herramienta [ts-java][tsJava]
 
 ### Generar paquete de aplicación
 
@@ -164,39 +166,45 @@ Para generar un paquete de instalación ejecutar el comando:
 
 Esto generará un paquete de instalación dependiendo en el SO que nos encontremos. Es decir, si estamos en un Linux 64bits generará un paquete para Linux de 64bits, si estamos en Windows generaría un .exe de instalación y con Mac lo mismo.
 
-__* Windows:__ para generar un paquete es requerido el programa NSIS 3.X. Añadirlo al PATH de variables de entorno en Windows
+__* Windows:__ para generar un paquete es requerido NSIS 3.X. Añadirlo al PATH de variables de entorno en Windows
 
 El paquete será creado y se localizará en la carpeta ***releases*** en la raiz del proyecto
 
-##### Carpeta resources:
+##### Carpeta resources
+
 En esta carpeta de recursos existen tres carpetas, una por cada plataforma. Se recomienda no modificar ningún archivo ya que son archivos necesarios de cada plataforma para generar la aplicación.
 Se puede modificar el icono que tendra nuestra aplicación.
 
 ##### JVM Embebida
+
 La posibilidad de empaquetar una aplicación permite muchas variantes, una de ellas es empaquetar una JVM para permitir al usuario no tener que instalar Java para ejecutar la aplicación, por lo que podemos empaquetar la JVM en el paquete de instalación. Se debe tener en cuenta que esto aumenta el tamaño de la aplicación pero reduce la complejidad para el usuario a la hora de ejecutar una aplicación.
 
 Para introducir modificaciones en la generación del paquete se deben modificar las tareas releases situadas en la carpeta tasks.
 
 Por ejemplo, en linux:
 
-  : En la carpeta resources/linux tenemos la jre que queremos integrar en la aplicación, además un archivo postinstall que se encargará de instalar la JVM.
-  : En el fichero ***release_linux*** tenemos la función que genera el paquete (packToDebFile). En ella se ha introducido la siguiente funcionalidad:
+  - En la carpeta ___resources/linux___ tenemos la jre que queremos integrar en la aplicación, además un archivo ___postinstall___ que se encargará de instalar la JVM.
+  - En el fichero ___release_linux___ tenemos la función que genera el paquete ___(packToDebFile)___. En ella se ha introducido la siguiente funcionalidad:
 
-  : 1. Copiar la JRE que tenemos en resources al destino (carpeta build):
+    1. Copiar la JRE que tenemos en resources al destino (carpeta build):
+    
         ```sh
           //Copy jvm
           projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
         ```
-  : 2. Copiar el archivo postinstall e instroducirlo en la ruta por defecto de los paquetes .deb, además se le da permiso de ejecución a root para ejecutar el script, por lo que al instalar la aplicación requiere permisos de administrado:
+        
+    2. Copiar el archivo postinstall e instroducirlo en la ruta por defecto de los paquetes .deb, además se le da permiso de ejecución a root para ejecutar el script, por lo que al instalar la aplicación requiere permisos de administrador:
+    
         ```sh
           // Copy preinst
           var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
           packDir.write('DEBIAN/postinst', postinst);
           fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
         ```
- ### Autor
+        
+### Autor
 
- Daniel García Mandillo
+Daniel García Mandillo
 
 
 [eja1]: <https://github.com/DanielGarciaMandillo/electron-node-java>
