@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "npm install && cd app && npm install",
+    "download": "npm install && cd app && npm install",
     "start": "gulp build && cd build && npm start"
   },
   "dependencies": {
