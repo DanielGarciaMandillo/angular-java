@@ -1,160 +1,200 @@
-# Angular Electron
+# Electron Java Angular Project
 
-Requeriments:
+### Objetivo de la documentación
 
-Node v5
-npm v3
+Desarrolladores Java para implementar un proyecto Java con Maven con una interfaz de usuario basado en Angular 2 y Electron con Typescript para un tipado estático.
 
-1) Clone repository
-
-2) npm run build (Download dependencies npm and build project)
-
-3) npm start
-
-Creating package:
-
-```gulp release```
-
-# electron-node-java
-
-#Next Deprecated:
-
-Build cross platform desktop apps with web technologies using java from javascript
-
-- [Electron project]
-- [Node-java project]
-- Based on [Electron boilerplate] for build compilation packages (Linux, Windows and Mac)
-
-# Guide to developers
-
-This guide will be seen by the developer
-
-##Requeriments
-
-You have to have installed on your computer [NodeJS], [Python 2.X] and [Maven].
-
-You can see [supported platforms] for Electron.
-
-You can see [supported JVM] for Node-java.
-
-##Quick start
-
-1) Clone the project electron-node-java
-
-* HTTPS
-
-```git clone https://github.com/DanielGarciaMandillo/electron-node-java.git```
-
-* SSH
-
-```git clone git@github.com:DanielGarciaMandillo/electron-node-java.git```
-
-2) Go to folder electron-node-java
-
-```cd electron-node-java```
-
-3) Type ```npm install``` to download dependencies for project Electron.
-
-4) Type ```cd app && npm install``` to download dependencies for application project.
-
-5) Type ```cd .. ``` to go to main folder project.
-
-6) Type ```npm start``` to open browser.
-
-Now you can use the application:
-
-![Tutorial image][image-tutorial]
-
-##Changing code
-
-- When java code changes in native java project you should generate a new jar:
-    * Type ```npm start```, that includes a maven command for generate it.
-- When javascript code changes you should restart the browser. Two ways:
-  * In browser > Edit > View Reload or use shortcut ```Ctrl + R```
-
-## JVM embedded
-
-This project includes a JVM so the user does not have to install it. You can create a JVM embedded in two steps:
-
-1) Copy JVM and postinst in debian package directory (file release_[YourSystem].js):
-
-```js
-  //Copy jvm
-  projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
-
-  // Copy preinst
-  var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
-  packDir.write('DEBIAN/postinst', postinst);
-  fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
+### Estructura de la aplicación
+Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proyecto:
 ```
+    --- src |--- main/java > java code...
+            |--- test/java > java test code...
+    --- resources ...
+    --- pom.xml
+```
+### Integrar el proyecto Electron Java Angular
 
-2) Create postinst script in correct folder
+1. ***Descargar el proyecto [Electron Node Angular][eja1] desde Github***
+    1. Puedes descargar el proyecto como zip.
+    2. Puedes hacer una copia del repositorio con "Fork".
+
+2. ***Copiar el proyecto Electron-Node-Angular en el mismo nivel de tu proyecto Java, la estructura debería ser:***
+    ```
+        [your Java project] --- src
+        [your Java project] --- pom.xml
+        [Electron  project] --- app
+        [Electron  project] --- resources
+        [Electron  project] --- tasks
+        [Electron  project] --- gulpfile.js
+        [Electron  project] --- tsconfig.json
+        [Electron  project] --- typings.json
+    ```
+    También se incluye el package.json, si ya tienes un package.json en tu proyecto Java debes combinar ambos para un correcto funcionamiento.
+
+    *Ahora tienes tu proyecto Java (backend) integrado con el proyecto Electron Node Angular (frontend).*
+
+### Frontend con Java
+
+- ***Angular-Electron API: Basado en [angular-electron][ae1]***
+    : La estructura del API es el siguiente:
+    : -- __Carpeta electron__: aquí encontramos el nucleo de la aplicación encargado de que todo el código sea ejecutado en el proceso principal de Electron.
+    : -- __Archivos app_ui.ts y main.ts__: de esta forma se carga el proceso de renderizado del browser.
+
+- ***Actualización de la API Angular-Electron***
+    : Se debe tener en cuenta que el core principal del proyecto está basado en [angular-electron][ae1], este puede que se actualize y necesitemos alguna funcionalidad actualizada para poder beneficiarnos de la actualización.
+    En este caso se debe tener en cuenta varios aspectos:
+    1. Actualizar únicamente los archivos de la carpeta "electron" y los archivos "app_ui.ts y main.ts" manteniendo las rutas de los imports de forma correcta en nuestro proyecto. En el caso de que haya nuevos archivos añadirlos siguiendo un órden lógico en el árbol de carpetas.
+    2. Revisar las versiones de las dependencias en el archivo package.json de la carpeta *app*, si el proyecto se actualiza es posible que las versiones hayan cambiado.
+
+        **Ayuda a la comunidad!** Con el fin de tener el proyecto actualizado, se sugiere que si se ha necesitado actualizar dicho proyecto y se haya comprobado que todo es correcto, hacer un pull-request al proyecto [Electron Node Angular][eja1] para poder aprobarlo y que no quede obsoleto.
+
+- ***Manejo de la API Angular-Electron***
+    : Manejo de electron API: ¿qué podemos modificar de estos archivos? La mayoría de estos archivos son de arquitectura de la aplicación y permiten la comunicación ICP entre el proceso principal y el proceso de renderizado uniendo Angular y Electron, pero ¿qué cosas pueden ser útiles para un desarrollador?.
+
+         - ***Archivo electron_app.ts :***
+            nos encontramos con la función initializeMainWindow(). En ella se puede modificar las dimensiones del browser, la url que debe cargar al iniciarse o si se quiere que por defecto se abran las devTools de Chrome (por defecto están abiertas ya que para el desarrollador son muy útiles pero quizás para un usuario final esto no lo queremos, pues se desactivan desde está función)
+
+* ***Carpeta app:***
+    : En esta carpeta nos encontramos con lo siguiente:
+    : * ***Electron API:*** explicado anteriormente
+    : * ***Carpeta angular:*** en esta carpeta están los archivos desarrollados relacionados con Angular 2 y en la que se deben incluir los archivos nuevos desarrollados.
+    : * ***Archivo index.html:*** es el archivo html principal de la aplicación y el que se carga en el momento que inicia la aplicación. Debe contener los polyfills de Angular y cargar el archivo app_ui mediante el tag <script>. El resto del contenido debe ser desarrollado por el programador como un index normal.
+    : * ***Archivo package.json:*** carga de dependencias para el correcto funcionamiento de la aplicación.
+
+### Ejecutar la aplicación
+
+##### Requisitos
+Los siguientes requisitos son necesarios para ejecutar correctamente un proyecto con Java, Angular 2 usando Typescript y Electron:
+
+  - [Node 5][node5]
+  - [Npm 3][npm3]
+  - [Typescript (node module global)][ts]
+  - [Typings (node module global)][typ]
+  - [Python 2.X][pyth]
+
+  * [Plataformas soportadas][suppElec] por Electron
+  * [JVM soportadas][suppJava] por node-java
+
+##### Descarga de dependencias:
+
+  En la raiz del proyecto ejecutar:
 
 ```sh
-#!/bin/sh
-cd /opt/electron-node-java/;
-sudo mkdir -p /usr/lib/jvm/java-8-oracle/jre;
-sudo mv jre-8u66-linux-x64.tar.gz /usr/lib/jvm/java-8-oracle;
-cd /usr/lib/jvm/java-8-oracle;
-sudo tar zxvf jre-8u66-linux-x64.tar.gz;
-sudo rm -rf jre;
-sudo mv jre1.8.0_66 jre;
-sudo rm -rf jre1.8.0_66:
+npm run download
 ```
-Important : The JVM must be the same version as the JDK
+ Este comando nos descarga todas las dependencias necesarias de los repositorios npm para lanzar la aplicación e instala los typings necesarios para la compilación de los archivos typescript
 
-##Application deployment
+##### Lanzar la aplicación
 
-###Linux (Debian)
+En la raiz del proyecto ejecutar:
+```sh
+npm start
+```
+  Este comando tiene el siguiente ciclo de vida:
 
-On main folder of project you should type:
+1. Ejecuta Maven para generar el .jar.
+2. Ejecuta ts-java generando y preparando los objetos y clases Java para poder usarlos desde Angular.
+3. Compilación de todos los archivos typescript a javascript
+4. Todos los recursos son enviados a la carpeta de construcción (build)
+5. Lanza electron usando los archivos generados en la carpeta build
 
-```npm run release```
+Por el momento, solo se usa un jar en el que se debe integrar todas las dependencias en él. Para ello hay que indicar en el pom.xml del proyecto Java que haga esa tarea:
 
-You can find the package created in ```resources``` folder
+```xml
+<plugin>
+<artifactId>maven-assembly-plugin</artifactId>
+<configuration>
+  <outputDirectory>app/bin</outputDirectory>
+  <descriptorRefs>
+    <descriptorRef>jar-with-dependencies</descriptorRef>
+  </descriptorRefs>
+</configuration>
+</plugin>
+```
 
-###Windows
+### Usar Java en Angular (node-java y ts-java)
 
-[NSIS 3.X] is required for this task. Then add its folder in your PATH environment variable.
+Para poder usar tanto los objetos, clases, interefaces... de Java en el frontend necesitamos dos herramientas:
 
-Comming soon...
+ : * ***node-java*** es un paquete Node que proporciona una API entre aplicaciones Node y aplicaciones Java que permite usar Java en código Javascript
 
-###Mac
+ : * ***ts-java*** es una herramienta que genera ficheros Typescript respecto a clases Java, permitiendo usar clases Java en lenguaje Typescript encapsulando el archivo que genera el paquete node-java.
 
-Comming soon...
+        Se puede configurar en el fichero package.json de la raiz del proyecto:
+        ```json
+          "tsjava":
+            {
+              "tsJavaModulePath": "./app/java/tsJavaModule.ts",
+              "javaTypingsPath": "../../typings/browser.d.ts",
+              "classpath": [
+                  "app/bin/*.jar"
+                ],
+              "packages": [
+                "com.todo.**"
+              ]
+            }
+        ```
+        Principales propiedades:
+        : -- tsJavaModulePath : indica donde se generan todos los objetos Java en lenguaje typescript
+        : -- javaTypingsPath : indica donde se encuentran los typings necesarios en la compilación typescript
+        : -- classpath: indica donde se encuentra el jar que se va a utilizar
+        : -- packages: un array que contiene los paquetes que queremos exportar como modulos typescript
+
+        Documentación completa de la herramienta [ts-java][tsJava]
+
+### Generar paquete de aplicación
+
+Para generar un paquete de instalación ejecutar el comando:
+
+```sh
+  gulp release
+```
+
+Esto generará un paquete de instalación dependiendo en el SO que nos encontremos. Es decir, si estamos en un Linux 64bits generará un paquete para Linux de 64bits, si estamos en Windows generaría un .exe de instalación y con Mac lo mismo.
+
+__* Windows:__ para generar un paquete es requerido el programa NSIS 3.X. Añadirlo al PATH de variables de entorno en Windows
+
+El paquete será creado y se localizará en la carpeta ***releases*** en la raiz del proyecto
+
+##### Carpeta resources:
+En esta carpeta de recursos existen tres carpetas, una por cada plataforma. Se recomienda no modificar ningún archivo ya que son archivos necesarios de cada plataforma para generar la aplicación.
+Se puede modificar el icono que tendra nuestra aplicación.
+
+##### JVM Embebida
+La posibilidad de empaquetar una aplicación permite muchas variantes, una de ellas es empaquetar una JVM para permitir al usuario no tener que instalar Java para ejecutar la aplicación, por lo que podemos empaquetar la JVM en el paquete de instalación. Se debe tener en cuenta que esto aumenta el tamaño de la aplicación pero reduce la complejidad para el usuario a la hora de ejecutar una aplicación.
+
+Para introducir modificaciones en la generación del paquete se deben modificar las tareas releases situadas en la carpeta tasks.
+
+Por ejemplo, en linux:
+
+  : En la carpeta resources/linux tenemos la jre que queremos integrar en la aplicación, además un archivo postinstall que se encargará de instalar la JVM.
+  : En el fichero ***release_linux*** tenemos la función que genera el paquete (packToDebFile). En ella se ha introducido la siguiente funcionalidad:
+
+  : 1. Copiar la JRE que tenemos en resources al destino (carpeta build):
+        ```sh
+          //Copy jvm
+          projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
+        ```
+  : 2. Copiar el archivo postinstall e instroducirlo en la ruta por defecto de los paquetes .deb, además se le da permiso de ejecución a root para ejecutar el script, por lo que al instalar la aplicación requiere permisos de administrado:
+        ```sh
+          // Copy preinst
+          var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
+          packDir.write('DEBIAN/postinst', postinst);
+          fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
+        ```
+ ### Autor
+
+ Daniel García Mandillo
 
 
-# Structure
-
-A basic electron-node-java application needs just these files:
-
-* src/main/java - Folder with java project sources.
-* bin - Folder with required jars.
-* app - Folder with code using java-node.
-  * app.js - Javascript code using java-node.
-  * index.html - A web page to render.
-  * browser.js - Starts the app and creates a browser window to render HTML (NodeJS file).
-  * package.json - Points to the app's main file and lists its details and dependencies of APPLICATION project.
-* resources - resources for particular operating system. You can change logo package or write script pre/post install package (in this example a JRE is installed).
-* releases - packages created to install in OS (Windows, Debian or Mac)
-* tasks - build and development environment scripts.
-* package.json - Points to the app's main file and lists its details and dependencies of ELECTRON project.
-* pom.xml - It refers to the java project.
-* .gitignore - Ignore directories by entering the directory name into the file.
-
-
-#Author
-daniel.garciamandillo@gmail.com
-
-[electron docs]: https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md
-[Electron project]: https://github.com/mafintosh/electron-prebuilt
-[Electron boilerplate]: https://github.com/szwacz/electron-boilerplate
-[NodeJS]: https://nodejs.org
-[Python 2.X]: https://www.python.org/downloads
-[Maven]: http://maven.apache.org/download.cgi
-[VisualStudio 2013]: https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#DownloadFamilies_2
-[supported platforms]: https://github.com/atom/electron/blob/master/docs/tutorial/supported-platforms.md
-[supported JVM]: https://github.com/joeferner/node-java/blob/master/README.md
-[NSIS 3.X]: http://nsis.sourceforge.net/Main_Page
-[Node-java project]: https://github.com/joeferner/node-java
-[image-tutorial]: https://github.com/DanielGarciaMandillo/electron-node-java/blob/master/app/img/tutorial.png "Tutorial image"
+[eja1]: <https://github.com/DanielGarciaMandillo/electron-node-java>
+[ae1]: <https://github.com/angular/angular-electron>
+[node5]: <https://nodejs.org/en/download/>
+[npm3]: <https://docs.npmjs.com/getting-started/installing-node>
+[ts]: <https://www.npmjs.com/package/typescript>
+[typ]: <https://www.npmjs.com/package/typings>
+[pyth]: <https://www.python.org/downloads/>
+[suppElec]: <https://github.com/electron/electron/blob/master/docs/tutorial/supported-platforms.md>
+[suppJava]: <https://github.com/joeferner/node-java/blob/master/README.md>
+[tsJava]: <https://www.npmjs.com/package/ts-java>
+>>>>>>> 2ca881852ca757b68bf7af59b28b7a0f3d670eaa
