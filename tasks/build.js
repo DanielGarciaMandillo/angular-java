@@ -43,7 +43,17 @@ gulp.task('compile', ['java'], shell.task([
   'tsc typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
 ]));
 
+gulp.task('compileSemi', shell.task([
+  'tsc',
+  'tsc typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
+]));
+
 gulp.task("resources", ['compile'] , function () {
+    return gulp.src(["app/**/*", "!app/**/*.ts", "!**node_modules**"])
+        .pipe(gulp.dest("build"));
+});
+
+gulp.task("resourcesSemi", function () {
     return gulp.src(["app/**/*", "!app/**/*.ts", "!**node_modules**"])
         .pipe(gulp.dest("build"));
 });
@@ -62,5 +72,6 @@ gulp.task('watch', function () {
 });
 
 gulp.task('copy-watch', ['build']);
-gulp.task('build', ['clean', 'maven', 'java', 'compile', 'resources', 'finalize']);
-gulp.task('default', ['build']);
+gulp.task('build', ['compileSemi', 'resourcesSemi']);
+
+gulp.task('buildFull', ['clean', 'maven', 'java', 'compile', 'resources', 'finalize']);

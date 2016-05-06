@@ -35,19 +35,19 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
 ### Frontend con Java
 
 - ***Angular-Electron API: Basado en [angular-electron][ae1].***
-    
-    
+
+
     La estructura del API es el siguiente:
     - __Carpeta electron__: aquí encontramos el nucleo de la aplicación encargado de que todo el código sea ejecutado en el proceso principal de Electron.
     - __Archivos app_ui.ts y main.ts__: de esta forma se carga el proceso de renderizado del browser.
 
 - ***Actualización de la API Angular-Electron***
-    
+
 
     Se debe tener en cuenta que el core principal del proyecto está basado en [angular-electron][ae1], este puede que se actualice y necesitemos alguna funcionalidad nueva para poder beneficiarnos de ella.
-    
+
     En este caso se debe tener en cuenta varios aspectos:
-    
+
     1. Actualizar únicamente los archivos de la carpeta __"electron"__ y los archivos __"app_ui.ts y main.ts"__ manteniendo las rutas de los imports de forma correcta en nuestro proyecto. En el caso de que haya nuevos archivos añadirlos siguiendo un órden lógico en el árbol de carpetas.
     2. Revisar las versiones de las dependencias en el archivo package.json de la carpeta __"app"__, si el proyecto se actualiza es posible que las versiones hayan cambiado.
 
@@ -55,7 +55,7 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
 
 - ***Manejo de la API Angular-Electron***
 
-    Manejo de electron API: ¿qué podemos modificar de estos archivos? 
+    Manejo de electron API: ¿qué podemos modificar de estos archivos?
     La mayoría de estos archivos son de arquitectura de la aplicación y permiten la comunicación ICP entre el proceso principal y el proceso de renderizado uniendo Angular y Electron, pero ¿qué cosas pueden ser útiles para un desarrollador?.
 
     - ***Archivo electron_app.ts :***
@@ -65,7 +65,7 @@ Un proyecto Java que usa Maven tiene la siguiente estructura en la raiz del proy
 * ***Carpeta app:***
 
     En esta carpeta nos encontramos con lo siguiente:
-    
+
     * ***Electron API:*** explicado anteriormente
     * ***Angular:*** en esta carpeta están los archivos desarrollados relacionados con Angular 2 y en la que se deben incluir los archivos nuevos desarrollados.
     * ***index.html:*** es el archivo html principal de la aplicación y el que se carga en el momento que inicia la aplicación. Debe contener los polyfills de Angular y cargar el archivo app_ui con el tag html ```<script>```. El resto del contenido debe ser desarrollado por el programador como un index normal.
@@ -152,7 +152,7 @@ Para poder usar tanto los objetos, clases, interefaces... de Java en el frontend
     - javaTypingsPath : indica donde se encuentran los typings necesarios en la compilación typescript
     - classpath: indica donde se encuentra el jar que se va a utilizar
     - packages: un array que contiene los paquetes que queremos exportar como modulos typescript
-    
+
     Documentación completa de la herramienta [ts-java][tsJava]
 
 ### Generar paquete de aplicación
@@ -186,21 +186,21 @@ Por ejemplo, en linux:
   - En el fichero ___release_linux___ tenemos la función que genera el paquete ___(packToDebFile)___. En ella se ha introducido la siguiente funcionalidad:
 
     1. Copiar la JRE que tenemos en resources al destino (carpeta build):
-    
+
         ```sh
           //Copy jvm
           projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
         ```
-        
+
     2. Copiar el archivo postinstall e instroducirlo en la ruta por defecto de los paquetes .deb, además se le da permiso de ejecución a root para ejecutar el script, por lo que al instalar la aplicación requiere permisos de administrador:
-    
+
         ```sh
           // Copy preinst
           var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
           packDir.write('DEBIAN/postinst', postinst);
           fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
         ```
-        
+
 ### Autor
 
 Daniel García Mandillo
