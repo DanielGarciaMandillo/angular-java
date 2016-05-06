@@ -43,13 +43,18 @@ function waitForPingback(){
 
 function initializeMainWindow(){
   applicationRef = new electron.BrowserWindow({
-    width:1280,
-    height: 1024,
+    width: 1280,
+    height: 1024
   });
-  webcontents = applicationRef.webContents;
-  webcontents.openDevTools();
 
-  applicationRef.loadURL('file:// '+ __dirname +'/../../index.html');
+  webcontents = applicationRef.webContents;
+  //Webcontents properties
+  webcontents.openDevTools([{
+      mode: 'bottom'
+    }]);
+
+  webcontents.loadURL('file:// ' + __dirname + '/../../index.html');
+
 }
 
 export function bootstrap(appComp: any, providers?: any) {
