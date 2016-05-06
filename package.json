@@ -1,7 +1,8 @@
 {
   "scripts": {
     "download": "npm install && cd app && npm install",
-    "start": "gulp build && cd build && npm start"
+    "start": "gulp build && cd build && npm start",
+    "full": "gulp buildFull && cd build && npm start"
   },
   "dependencies": {
     "asar": "^0.7.2",
@@ -22,6 +23,9 @@
     "packages": [
       "com.todo.**"
     ],
-    "classes": []
+    "classes": [
+      "java.util.ArrayList",
+      "java.lang.Boolean"
+    ]
   }
 }
