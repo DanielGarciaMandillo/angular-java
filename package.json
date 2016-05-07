@@ -16,7 +16,7 @@
   },
   "tsjava": {
     "tsJavaModulePath": "./app/java/tsJavaModule.ts",
-    "javaTypingsPath": "../../typings/browser.d.ts",
+    "javaTypingsPath": "../typings/browser.d.ts",
     "classpath": [
       "app/bin/*.jar"
     ],
