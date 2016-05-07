@@ -40,12 +40,12 @@ gulp.task('java', ['maven'], shell.task([
 
 gulp.task('compile', ['java'], shell.task([
   'tsc',
-  'tsc typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
+  'tsc app/typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
 ]));
 
 gulp.task('compileSemi', shell.task([
   'tsc',
-  'tsc typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
+  'tsc app/typings/browser.d.ts app/*.ts app/angular/*.ts app/java/*.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata --outDir build'
 ]));
 
 gulp.task("resources", ['compile'] , function () {
