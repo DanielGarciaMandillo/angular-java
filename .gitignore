@@ -10,3 +10,6 @@ resources/**/*tar.gz*
 target
 tmp
 typings/
+/.settings/
+/.classpath
+/.project
