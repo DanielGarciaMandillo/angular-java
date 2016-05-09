@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "download": "npm install && cd app && npm install",
+    "download": "npm install && cd app && npm install && cd .. && typings install",
     "start": "gulp build && cd build && npm start",
     "full": "gulp buildFull && cd build && npm start"
   },
@@ -16,7 +16,7 @@
   },
   "tsjava": {
     "tsJavaModulePath": "./app/java/tsJavaModule.ts",
-    "javaTypingsPath": "../typings/browser.d.ts",
+    "javaTypingsPath": "../../typings/browser.d.ts",
     "classpath": [
       "app/bin/*.jar"
     ],

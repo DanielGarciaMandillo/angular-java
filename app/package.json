@@ -6,7 +6,6 @@
   "author": "Daniel Garcia Mandillo",
   "main"    : "main.js",
   "scripts": {
-    "postinstall": "typings install",
     "start": "electron ."
   },
   "keywords": [
