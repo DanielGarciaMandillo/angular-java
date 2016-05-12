@@ -2,7 +2,7 @@
   "name": "angular-java",
   "productName": "angular-java",
   "description": "Build cross platform desktop apps with web technologies using java from javascript",
-  "version": "0.1.5",
+  "version": "0.5.0",
   "author": "Daniel Garcia Mandillo",
   "main"    : "main.js",
   "scripts": {
