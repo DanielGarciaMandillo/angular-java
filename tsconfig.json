@@ -12,8 +12,8 @@
   },
   "exclude": [
     "build",
-  	"typings",    
-  	"app/typings/main.d.ts",
+  	"typings",
+  	"typings/main.d.ts",
     "app/node_modules",
     "node_modules"
   ]

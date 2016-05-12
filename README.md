@@ -97,7 +97,7 @@ npm run download
 
 En la raiz del proyecto ejecutar:
 ```sh
-npm start
+npm run full
 ```
   Este comando tiene el siguiente __ciclo de vida:__
 
@@ -106,6 +106,12 @@ npm start
 3. Compilación de todos los archivos typescript a javascript
 4. Todos los recursos son enviados a la carpeta de construcción (build)
 5. Lanza electron usando los archivos generados en la carpeta build
+
+El siguiente comando solo ejecutará las tareas 3, 4 y 5. Nos sirve cuando no hay cambios en Java y queremos aligerar el proceso
+```sh
+npm start
+```
+
 
 Por el momento, solo se usa un jar en el que se debe integrar todas las dependencias en él. Para ello hay que indicar en el pom.xml del proyecto Java que haga esa tarea:
 

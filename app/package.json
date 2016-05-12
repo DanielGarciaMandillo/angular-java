@@ -1,13 +1,12 @@
 {
-  "name": "electron-angular-java",
-  "productName": "electron-angular-java",
+  "name": "angular-java",
+  "productName": "angular-java",
   "description": "Build cross platform desktop apps with web technologies using java from javascript",
   "version": "0.1.5",
   "author": "Daniel Garcia Mandillo",
   "main"    : "main.js",
   "scripts": {
-    "postinstall": "typings install",
-    "start": "electron ."
+    "start": "./node_modules/electron-prebuilt/dist/electron ."
   },
   "keywords": [
     "Angular2",
