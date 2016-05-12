@@ -82,11 +82,11 @@ var packToDebFile = function () {
     packDir.write('DEBIAN/control', control);
 
     // Copy jvm
-    projectDir.copy('resources/linux/jre-8u66-linux-x64.tar.gz', readyAppDir.path('jre-8u66-linux-x64.tar.gz'));
+    projectDir.copy('resources/linux/java-jre', readyAppDir.path('java-jre'));
     // Copy preinst
-    var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
-    packDir.write('DEBIAN/postinst', postinst);
-    fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
+    // var postinst = projectDir.read('resources/linux/DEBIAN/postinst');
+    // packDir.write('DEBIAN/postinst', postinst);
+    // fs.chmodSync(packDir.path('DEBIAN/postinst'), '0755');
 
     // Build the package...
     childProcess.exec('fakeroot dpkg-deb -Zxz --build ' + packDir.path().replace(/\s/g, '\\ ') + ' ' + debPath.replace(/\s/g, '\\ '),

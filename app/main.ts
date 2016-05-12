@@ -2,6 +2,6 @@ import 'reflect-metadata';
 import 'zone.js/dist/zone';
 import {bootstrap} from './electron/main';
 
-import {App} from './angular/component';
+import { AppComponent } from './angular/app.component';
 
-bootstrap(App, []);
+bootstrap(AppComponent, []);
