@@ -2,7 +2,9 @@
   "scripts": {
     "download": "npm install && cd app && npm install && cd .. && typings install",
     "start": "gulp build",
-    "full": "gulp buildFull"
+    "full": "gulp buildFull",
+    "linux": "./app/node_modules/electron-prebuilt/dist/electron ./build",
+    "windows": "cd app/node_modules/electron-prebuilt/dist && electron.exe ../../../../build"
   },
   "dependencies": {
     "asar": "^0.7.2",

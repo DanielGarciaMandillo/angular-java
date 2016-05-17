@@ -120,12 +120,12 @@ var copyResources = function() {
 
 var electronForLinux = function() {
   return shell.task([
-    './app/node_modules/electron-prebuilt/dist/electron ./build'
+    'npm run linux'
   ]);
 }
 
 var electronForWindows = function() {
   return shell.task([
-    './app/node_modules/electron-prebuilt/dist/electron.exe ./build'
+    'npm run windows'
   ]);
 }
