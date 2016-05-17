@@ -5,9 +5,6 @@
   "version": "0.5.0",
   "author": "Daniel Garcia Mandillo",
   "main"    : "main.js",
-  "scripts": {
-    "start": "./node_modules/electron-prebuilt/dist/electron ."
-  },
   "keywords": [
     "Angular2",
     "Electron",

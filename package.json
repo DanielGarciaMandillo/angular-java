@@ -1,19 +1,21 @@
 {
   "scripts": {
     "download": "npm install && cd app && npm install && cd .. && typings install",
-    "start": "gulp build && cd build && npm start",
-    "full": "gulp buildFull && cd build && npm start"
+    "start": "gulp build",
+    "full": "gulp buildFull"
   },
   "dependencies": {
     "asar": "^0.7.2",
     "fs-jetpack": "^0.7.0",
+    "gulp": "^3.9.1",
     "gulp-shell": "^0.5.2",
+    "gulp-typescript": "^2.13.4",
     "gulp-util": "^3.0.6",
     "maven": "^3.0.6",
+    "merge2": "^1.0.2",
     "q": "^1.4.1",
     "ts-java": "^1.4.0",
-    "yargs": "^3.15.0",
-    "gulp": "^3.9.1"
+    "yargs": "^3.15.0"
   },
   "tsjava": {
     "tsJavaModulePath": "./app/java/tsJavaModule.ts",
