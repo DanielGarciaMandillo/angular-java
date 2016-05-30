@@ -2,19 +2,17 @@
 
 ### What is Angular-Java project
 
-Angular-Java is a library that helps Java developers to develop applications with a user interface based on Angular 2 and Typescript.
+***Angular-Java*** is a library that helps Java developers to develop applications with a user interface based on Angular 2 and Typescript.
 
-The library uses Electron, a framework for creating desktop app with web technologies for build a website.
+The library uses Electron, a framework for creating desktop app with web technologies for build a website. Also the library includes a creating package system for Linux, Windows and Mac.
 
-Also the library includes a creating package system for Linux, Windows and Mac.
-
-Why Angular 2 and Typescript? What makes the Angular 2/TypeScript combo so appealing to Java folks?
+**Why Angular 2 and Typescript?** What makes the Angular 2/TypeScript combo so appealing to Java folks?
 
 The code looks clean and easy to understand. A Java developer can read and understand most code in this lenguage
 
-Note:
+*Note:
 
-The project works on Linux. Windows has problems when Electron runs. Mac should work but it hasn't been tested.
+The project works on Linux. Windows has problems when Electron runs. Mac should work but it hasn't been tested.*
 
 ### Requirements
 
