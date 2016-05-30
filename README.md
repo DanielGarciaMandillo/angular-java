@@ -1,5 +1,21 @@
 # Angular Java Project
 
+### What is Angular-Java project
+
+Angular-Java is a library that helps Java developers to develop applications with a user interface based on Angular 2 and Typescript.
+
+The library uses Electron, a framework for creating desktop app with web technologies for build a website.
+
+Also the library includes a creating package system for Linux, Windows and Mac.
+
+Why Angular 2 and Typescript? What makes the Angular 2/TypeScript combo so appealing to Java folks?
+
+The code looks clean and easy to understand. A Java developer can read and understand most code in this lenguage
+
+Note:
+
+The project works on Linux. Windows has problems when Electron runs. Mac should work but it hasn't been tested.
+
 ### Requirements
 
 The next requirements are necessary to execute a Java, Angular 2 using typescript and Electron project:
@@ -104,9 +120,11 @@ JDK download from [Oracle official website][JDK]
     **Windows:**
     
     
-    - For Windows 64 bits platforms: having installed a Node 32 bits version instead 64 bits version as it indicated in the requirements.
-    
-    - For Windows 64 bits platforms: having installed a JDK 32 bits version instead 64 bits version as it indicated in the requirements. If you have JDK 64 bits you can see LNK2001 error messages.
+    - For Windows 64 bits platforms: 
+
+        - having installed a Node 32 bits version instead 64 bits version as it indicated in the requirements.
+
+        - having installed a JDK 32 bits version instead 64 bits version as it indicated in the requirements. If you have JDK 64 bits you can see LNK2001 error messages.
     
     - node-gyp npm module is required.
     
@@ -561,7 +579,7 @@ Once finished, we can see in the file jvm_dll_path.json the path JAVA_HOME used.
 5. Run command “gulp release” to generate the package with a embedded JVM.
 
 
-###Configuración de Eclipse IDE
+###Configurating Eclipse IDE
 
 Eclipse IDE is the quintessential Java developers. Eclipse has no default editor Typescript, to fix this we can install a plugin to edit Typescript code by following these steps:
 
