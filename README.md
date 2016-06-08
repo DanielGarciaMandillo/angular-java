@@ -568,7 +568,7 @@ What we should do is the following:
 1. Create a folder named “java-jre” in /opt/[productName] path and copy in this folder the JRE that we want use.
 2. Aiming JAVA_HOME system variable to that folder:
 ```
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+export JAVA_HOME=/opt/angular-java/java-jre
 ```
 3. Now we can run the command npm run download to download the application.
 Once finished, we can see in the file jvm_dll_path.json the path JAVA_HOME used.
