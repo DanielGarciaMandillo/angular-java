@@ -98,9 +98,9 @@ JDK download from [Oracle official website][JDK]
 
 - [Typings][TYPINGS]
 
-    To install Typings global npm package you have to type the next command on Linux or Windows console:
+    To install Typings global npm package you have to type the next command on Linux or Windows console (force install version 0.8.0):
     ```
-    npm install -g typings
+    npm install -g typings@0.8.0
     ```
 
 - [Node-java][NODE_JAVA]
